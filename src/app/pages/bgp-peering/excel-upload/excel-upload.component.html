@@ -1,10 +1,20 @@
-<p>routing works here!</p>
-<div class="center">
+<div class="center mt-3 mb-3">
     <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
     (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
-        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
-          Optional custom content that replaces the the entire default content.
-          <button type="button" (click)="openFileSelector()">Browse Files</button>
+        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" class="file-dnd">
+          <!-- <div class="col-sm-6">
+            <div class="image-container">
+              <img class="mt-200px" width="80%" src="../../../../assets/img/file-upload.jpg">
+            </div>
+          </div> -->
+          <!-- <button type="button" (click)="openFileSelector()">Browse Files</button> -->
+          <div class="d-flex flex-column justify-content-center">
+            <div class="row dnd-title"><p>Drag & Drop the file</p></div>
+            <div class="row p-center"><p>or</p></div>
+            <div class="row">
+              <button type="button" class="btn btn-primary btn-round" (click)="openFileSelector()">Browse Files</button>
+            </div>
+          </div>
         </ng-template>
     </ngx-file-drop>
     <div class="upload-table">
