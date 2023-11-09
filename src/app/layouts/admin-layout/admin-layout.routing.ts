@@ -5,13 +5,13 @@ import { UserComponent } from '../../pages/user/user.component';
 // import { TableComponent } from '../../pages/table/table.component';
 import { IconsComponent } from '../../pages/icons/icons.component';
 import { IpTableComponent } from '../../pages/bgp-peering/ip-table/ip-table.component';
-import { IpUploadComponent } from '../../pages/bgp-peering/ip-upload/ip-upload.component';
+import { BgpPeeringComponent } from 'src/app/pages/bgp-peering/bgp-peering.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user',           component: UserComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'ip-list',        component: IpTableComponent},
-    { path: 'ip-upload',      component: IpUploadComponent},
+    { path: 'bgp-peering',      component: BgpPeeringComponent},
 
 ];

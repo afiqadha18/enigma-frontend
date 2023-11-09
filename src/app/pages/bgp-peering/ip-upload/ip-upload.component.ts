@@ -7,7 +7,8 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 @Component({
     selector: 'ip-upload-cmp',
     moduleId: module.id,
-    templateUrl: 'ip-upload.component.html'
+    templateUrl: 'ip-upload.component.html',
+    styleUrls: ['./ip-upload.component.css']
 })
 
 export class IpUploadComponent implements OnInit{
@@ -36,8 +37,6 @@ export class IpUploadComponent implements OnInit{
 
     addNewData() {
       this.data().push(this.newData());
-      console.log(this.addForm.value.data.length);
-
     }
 
     removeData(dataIndex: number) {
