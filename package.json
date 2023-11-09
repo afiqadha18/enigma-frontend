@@ -31,6 +31,8 @@
     "jquery": "^3.7.1",
     "material-design-icons": "^3.0.1",
     "moment": "^2.29.4",
+    "ngx-drag-drop": "^15.1.0",
+    "ngx-file-drop": "^15.0.0",
     "ngx-toastr": "^15.2.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

@@ -93,12 +93,35 @@ $purple-states-color:        darken($purple-color, 8%) !default; */
 
 .add-btn-icon {
   color: var(--success-color) !important;
+  font-size: 5px;
 }
 .remove-btn-icon {
   color: var(--danger-color) !important;
 }
 .add-btn-icon:hover, .remove-btn-icon:hover {
-  transform: scale(1.5);
+  transform: scale(1.1);
+}
+
+/* #mat-tab-content-0-0 > div {
+  overflow-x: hidden !important;
+} */
+
+
+/* .tab-btn ::after {
+  background-color: var(--danger-color) !important;
+  color: white;
+} */
+
+.mdc-tab-indicator--active .mdc-tab-indicator__content {
+  display: none !important;
+}
+
+.mdc-tab {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
 
+#mat-tab-label-0-0 > span.mdc-tab__content > span > button.mdc-button:active {
+  background-color: blue !important;
+}

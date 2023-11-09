@@ -10,6 +10,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgxFileDropModule } from 'ngx-file-drop';
 
 import { AdminLayoutRoutes }        from './admin-layout.routing';
 import { DashboardComponent }       from '../../pages/dashboard/dashboard.component';
@@ -19,6 +21,8 @@ import { IpTableComponent }         from '../../pages/bgp-peering/ip-table/ip-ta
 import { IpUploadComponent }        from '../../pages/bgp-peering/ip-upload/ip-upload.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BgpPeeringComponent } from 'src/app/pages/bgp-peering/bgp-peering.component';
+import { ExcelUploadComponent } from 'src/app/pages/bgp-peering/excel-upload/excel-upload.component';
 
 @NgModule({
   imports: [
@@ -33,14 +37,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatTooltipModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTabsModule,
+    NgxFileDropModule
   ],
   declarations: [
     DashboardComponent,
     UserComponent,
     IconsComponent,
     IpTableComponent,
-    IpUploadComponent
+    IpUploadComponent,
+    BgpPeeringComponent,
+    ExcelUploadComponent
   ],
   providers: [],
 })
