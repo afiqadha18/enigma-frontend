@@ -1,3 +1,39 @@
-::ng-deep #mat-tab-content-0-0 > div {
-  overflow-x: hidden !important;
+// :host ::ng-deep #mat-tab-content-0-0 > div {
+//   overflow-x: hidden !important;
+// }
+
+.image-container {
+  align-items: center;
+  // min-height: 80vh;
+  padding: 4rem 0rem;
+  display: flex;
 }
+
+.h-70 {
+  height: 70% !important;
+}
+
+::ng-deep .mt-200px {
+  width: 22vw;
+  margin-top: 200px !important;
+}
+
+:host ::ng-deep #mat-tab-content-0-1 > div > excel-upload-cmp > div > ngx-file-drop > div[class*=ngx-file-drop__drop-zone]{
+  height: 300px !important;
+  border: 2px dotted var(--primary-color);
+}
+
+:host ::ng-deep #mat-tab-content-0-1 > div > excel-upload-cmp > div > ngx-file-drop > div > div[class*=ngx-file-drop__content] {
+  margin-top: 100px !important;
+}
+
+::ng-deep .p-center {
+  align-self: center !important;
+  color: black;
+}
+
+::ng-deep .dnd-title{
+  color: black !important;
+  font-weight: 900;
+}
+
