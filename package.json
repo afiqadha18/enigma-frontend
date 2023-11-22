@@ -33,8 +33,10 @@
     "moment": "^2.29.4",
     "ngx-drag-drop": "^15.1.0",
     "ngx-file-drop": "^15.0.0",
+    "ngx-filesize": "^3.0.2",
     "ngx-toastr": "^15.2.2",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.9.0",
     "tslib": "^2.3.0",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.12.0"

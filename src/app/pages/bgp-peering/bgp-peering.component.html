@@ -5,18 +5,11 @@
         <h5 class="card-title">Add IP Address</h5>
       </div>
       <div class="card-body">
-        <mat-tab-group class="pl-2 pr-2" mat-stretch-tabs="false" mat-align-tabs="left">
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <!-- <mat-icon class="example-tab-icon">add_box</mat-icon>Manual Add -->
-              <button mat-stroked-button class="tab-btn"><mat-icon class="example-tab-icon">add_box</mat-icon>Manual Add</button>
-            </ng-template>
+        <mat-tab-group class="pl-2 pr-2" mat-stretch-tabs="false" mat-align-tabs="start">
+          <mat-tab label="Manual Add">
             <ip-upload-cmp></ip-upload-cmp>
           </mat-tab>
-          <mat-tab>
-            <ng-template mat-tab-label>
-              <button mat-stroked-button class="tab-btn ml-2"><mat-icon class="example-tab-icon">description</mat-icon>Excel Upload</button>
-            </ng-template>
+          <mat-tab label="Excel Upload">
             <excel-upload-cmp></excel-upload-cmp>
           </mat-tab>
         </mat-tab-group>

@@ -2,31 +2,38 @@
     <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
     (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
         <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector" class="file-dnd">
-          <!-- <div class="col-sm-6">
-            <div class="image-container">
-              <img class="mt-200px" width="80%" src="../../../../assets/img/file-upload.jpg">
-            </div>
-          </div> -->
-          <!-- <button type="button" (click)="openFileSelector()">Browse Files</button> -->
           <div class="d-flex flex-column justify-content-center">
-            <div class="row dnd-title"><p>Drag & Drop the file</p></div>
+            <div class="row dnd-title"><p>Drag & Drop file</p></div>
             <div class="row p-center"><p>or</p></div>
             <div class="row">
-              <button type="button" class="btn btn-primary btn-round" (click)="openFileSelector()">Browse Files</button>
+              <button type="button" class="btn btn-success btn-round browse-btn" (click)="openFileSelector()">Browse Files</button>
             </div>
           </div>
         </ng-template>
     </ngx-file-drop>
-    <div class="upload-table">
+    <div class="upload-table" *ngIf="files.length > 0">
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Filename</th>
+                    <th>File Size</th>
+                    <th>File Type</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody class="upload-name-style">
                 <tr *ngFor="let item of files; let i=index">
-                    <td><strong>{{ item.relativePath }}</strong></td>
+                    <td>
+                      <img class="file-icon" src="../../../../assets/img/xlsx.png" *ngIf="item.filetype != 'text/plain'">
+                      <img class="file-icon" src="../../../../assets/img/txt.png" *ngIf="item.filetype == 'text/plain'">
+                      <strong>{{ item.filename }}</strong>
+                    </td>
+                    <td><strong>{{ item.filesize | filesize }}</strong></td>
+                    <td><strong>{{ item.filetype }}</strong></td>
+                    <td>
+                      <button type="button" class="btn btn-danger btn-round mr-2" (click)="onRemove()">Remove</button>
+                      <button type="button" class="btn btn-success btn-round">Upload</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

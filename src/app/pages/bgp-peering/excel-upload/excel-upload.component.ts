@@ -1,5 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 'ngx-file-drop';
+import Swal from 'sweetalert2';
 
 @Component({
     selector: 'excel-upload-cmp',
@@ -9,19 +10,45 @@ import { NgxFileDropEntry, FileSystemFileEntry, FileSystemDirectoryEntry } from 
 
 export class ExcelUploadComponent{
 
-  public files: NgxFileDropEntry[] = [];
+  public files: Array<any>= [];
+  fileType: Array<String> = ['text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
 
   public dropped(files: NgxFileDropEntry[]) {
-    this.files = files;
     for (const droppedFile of files) {
 
       // Is it a file?
       if (droppedFile.fileEntry.isFile) {
         const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
         fileEntry.file((file: File) => {
-
           // Here you can access the real file
-          console.log(droppedFile.relativePath, file);
+          console.log(file);
+
+          if (this.files.length == 0) {
+            if (this.fileType.includes(file.type)) {
+              this.files.push({
+                  filename: file.name,
+                  filetype: file.type,
+                  filesize: file.size
+              });
+            } else {
+              Swal.fire({
+                title: 'Unsupported file type!',
+                text: 'Only .xlsx and .txt file is allowed',
+                icon: 'error',
+                showCloseButton: true,
+                showConfirmButton: false
+              })
+            }
+          } else {
+            Swal.fire({
+                title: 'Exceed Limit!',
+                text: 'Please proceed with submission before uploading another file',
+                icon: 'warning',
+                showCloseButton: true,
+                showConfirmButton: false
+              })
+          }
+
 
           /**
           // You could upload it like this:
@@ -56,4 +83,7 @@ export class ExcelUploadComponent{
     console.log(event);
   }
 
+  public onRemove() {
+    this.files.pop();
+  }
 }

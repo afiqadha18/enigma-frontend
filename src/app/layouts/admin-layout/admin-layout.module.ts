@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxFileDropModule } from 'ngx-file-drop';
+import { NgxFilesizeModule } from 'ngx-filesize';
 
 import { AdminLayoutRoutes }        from './admin-layout.routing';
 import { DashboardComponent }       from '../../pages/dashboard/dashboard.component';
@@ -39,7 +40,8 @@ import { ExcelUploadComponent } from 'src/app/pages/bgp-peering/excel-upload/exc
     ReactiveFormsModule,
     MatFormFieldModule,
     MatTabsModule,
-    NgxFileDropModule
+    NgxFileDropModule,
+    NgxFilesizeModule
   ],
   declarations: [
     DashboardComponent,
