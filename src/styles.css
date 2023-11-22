@@ -41,6 +41,14 @@ $purple-states-color:        darken($purple-color, 8%) !default; */
   background-color: rgb(0, 0, 0) !important;
 }
 
+.h-70 {
+  height: 70% !important;
+}
+
+.w-30 {
+  width: 30% !important;
+}
+
 .chip-pending {
   background-color: #fff8dd !important;
   color: #ffc700 !important;
@@ -66,62 +74,14 @@ $purple-states-color:        darken($purple-color, 8%) !default; */
   color: #ffffff !important;
 }
 
-.active-tab {
-  color: #6bd098 !important;
+.file-icon {
+  transform: scale(0.5);
 }
 
-.w-30 {
-  width: 30% !important;
+.sidebar[data-active-color=danger] .nav li.active > a, .sidebar[data-active-color=danger] .nav li.active > a i, .sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse], .sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse] i, .sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse] ~ div > ul > li.active .sidebar-mini-icon, .sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse] ~ div > ul > li.active > a, .off-canvas-sidebar[data-active-color=danger] .nav li.active > a, .off-canvas-sidebar[data-active-color=danger] .nav li.active > a i, .off-canvas-sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse], .off-canvas-sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse] i, .off-canvas-sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse] ~ div > ul > li.active .sidebar-mini-icon, .off-canvas-sidebar[data-active-color=danger] .nav li.active > a[data-toggle=collapse] ~ div > ul > li.active > a {
+      color: var(--success-color) !important;
 }
 
-/* .action-icon,
-.delete-icon {
-  transition-duration: 0.4s;
-  cursor: pointer;
-} */
-
-.action-icon {
-  color: #000000e0;
-}
-
-.search-icon:hover {
-  color: #000000 !important;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  font-weight: 900;
-}
-
-.add-btn-icon {
-  color: var(--success-color) !important;
-  font-size: 5px;
-}
-.remove-btn-icon {
-  color: var(--danger-color) !important;
-}
-.add-btn-icon:hover, .remove-btn-icon:hover {
-  transform: scale(1.1);
-}
-
-/* #mat-tab-content-0-0 > div {
-  overflow-x: hidden !important;
-} */
-
-
-/* .tab-btn ::after {
-  background-color: var(--danger-color) !important;
-  color: white;
-} */
-
-.mdc-tab-indicator--active .mdc-tab-indicator__content {
-  display: none !important;
-}
-
-.mdc-tab {
-  padding-left: 0px !important;
-  padding-right: 0px !important;
-}
-
-
-#mat-tab-label-0-0 > span.mdc-tab__content > span > button.mdc-button:active {
-  background-color: blue !important;
+.footr {
+  height: 30px;
 }

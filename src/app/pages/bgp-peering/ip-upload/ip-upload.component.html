@@ -1,58 +1,32 @@
 <form [formGroup]="addForm">
   <div class="w-100 mt-2 form-body" formArrayName="data">
-    <div
-      class="row d-flex align-items-center"
-      *ngFor="let data of data().controls; let i = index"
-      [formGroupName]="i"
-    >
+    <div class="row d-flex align-items-center" *ngFor="let data of data().controls; let i = index" [formGroupName]="i">
       <div class="col-md-1 pr-0">
         <button mat-icon-button class="add-btn-icon" (click)="addNewData()">
           <mat-icon>add_circle</mat-icon>
         </button>
-        <button
-          mat-icon-button
-          class="remove-btn-icon"
-          *ngIf="addForm.value.data.length > 1"
-          (click)="removeData(i)"
-        >
+        <button mat-icon-button class="remove-btn-icon" *ngIf="addForm.value.data.length > 1" (click)="removeData(i)">
           <mat-icon>do_not_disturb_on</mat-icon>
         </button>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label>IP Address</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="ipAddress"
-            placeholder="127.0.0.1"
-            value=""
-          />
+          <input type="text" class="form-control" formControlName="ipAddress" placeholder="127.0.0.1" value=""/>
           <!-- <mat-error *ngIf="addForm.get(['data', i, 'ipAddress'])?.status == 'INVALID'">You must enter IP Address!</mat-error> -->
         </div>
       </div>
       <div class="col-md-2">
         <div class="form-group">
           <label>Duration</label>
-          <input
-            type="number"
-            class="form-control"
-            formControlName="duration"
-            placeholder="Minutes"
-            value=""
-          />
+          <input type="number" class="form-control" formControlName="duration" placeholder="Minutes" value=""/>
           <!-- <mat-error *ngIf="addForm.get('duration')?.value.invalid">You must enter duration!</mat-error> -->
         </div>
       </div>
       <div class="col-md-7">
         <div class="form-group">
           <label>Remarks</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="remarks"
-            placeholder="Remarks"
-          />
+          <input type="text" class="form-control" formControlName="remarks" placeholder="Remarks"/>
           <!-- <textarea class="form-control textarea">Add your remarks here</textarea> -->
         </div>
       </div>

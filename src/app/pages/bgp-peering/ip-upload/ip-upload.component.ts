@@ -7,8 +7,7 @@ import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 @Component({
     selector: 'ip-upload-cmp',
     moduleId: module.id,
-    templateUrl: 'ip-upload.component.html',
-    styleUrls: ['ip-upload.component.css']
+    templateUrl: 'ip-upload.component.html'
 })
 
 export class IpUploadComponent implements OnInit{

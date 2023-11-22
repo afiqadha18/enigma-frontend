@@ -68,6 +68,10 @@
               <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
             </tr> -->
           </table>
+          <div *ngIf="dataSource.data.length == 0" class="mt-2 d-flex justify-content-center">
+             <!-- <i class="nc-icon nc-alert-circle-i mr-1 align-self-center"></i> -->
+             <p class="nc-icon mb-0 align-self-center"><em>No items found!</em></p>
+          </div>
           <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
         </div>
       </div>
