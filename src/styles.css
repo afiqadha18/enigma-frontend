@@ -19,7 +19,7 @@ $link-disabled-color:        #666666 !default;
 
 $purple-color:               #c178c1 !default;
 $purple-states-color:        darken($purple-color, 8%) !default; */
-
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
 :root {
   --primary-color:#51cbce;
   --success-color:#6bd098;

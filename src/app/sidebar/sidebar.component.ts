@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Subscription } from 'rxjs';
 
 export interface RouteInfo {
     path: string;
@@ -13,6 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/ip-list',       title: 'IP List',           icon:'nc-bullet-list-67',    class: '' },
     { path: '/bgp-peering',   title: 'BGP Peering',       icon:'nc-cloud-upload-94',    class: '' },
     { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
+    { path: '/user-table',          title: 'Manage User',      icon:'nc-single-02',  class: '' },
 ];
 
 @Component({
@@ -21,9 +24,21 @@ export const ROUTES: RouteInfo[] = [
     templateUrl: 'sidebar.component.html',
 })
 
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
+    constructor(private authservice: AuthService){}
+    isUserAuthenticated = false;
+    private isUserAuthenticatedListener: Subscription | undefined;
     public menuItems: any[] = [];
     ngOnInit() {
+        this.isUserAuthenticated = this.authservice.getUserIsAuthenticated();
+        this.isUserAuthenticatedListener = this.authservice.getAuthStatusListener()
+        .subscribe(isAuth => {
+            this.isUserAuthenticated = isAuth;
+        });
         this.menuItems = ROUTES.filter(menuItem => menuItem);
+    }
+
+    ngOnDestroy(){
+        this.isUserAuthenticatedListener?.unsubscribe();
     }
 }

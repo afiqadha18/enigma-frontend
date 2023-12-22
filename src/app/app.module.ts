@@ -4,20 +4,29 @@ import { RouterModule } from '@angular/router';
 import { ToastrModule } from "ngx-toastr";
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
 import { NavbarModule} from './shared/navbar/navbar.module';
 import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AuthInterceptor } from "./auth/auth-interceptor"; 
+import { LoginComponent } from "./pages/login/login.component";
+import { MatButtonModule } from "@angular/material/button";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatCardModule } from "@angular/material/card";
+import { MatInputModule } from "@angular/material/input";
+import { MatGridListModule } from "@angular/material/grid-list";
 
 @NgModule({
     declarations: [
         AppComponent,
-        AdminLayoutComponent
+        AdminLayoutComponent,
+        LoginComponent
     ],
-    providers: [],
+    providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
     bootstrap: [AppComponent],
     imports: [
         HttpClientModule,
@@ -30,6 +39,14 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
         ToastrModule.forRoot(),
         FooterModule,
         FixedPluginModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatInputModule,
+        FormsModule,
+        MatGridListModule
+        
     ]
 })
 export class AppModule { }
