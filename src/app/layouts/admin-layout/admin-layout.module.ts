@@ -33,6 +33,7 @@ import { UserTableComponent } from 'src/app/pages/manage-user/user-listing/user-
 import { AddUserComponent } from 'src/app/pages/manage-user/add-user/add-user.component';
 import { LoginComponent } from 'src/app/pages/login/login.component';
 import { EditUserComponent } from 'src/app/pages/manage-user/edit-user/edit-user.component';
+import { FirstTimeLoginComponent } from 'src/app/pages/login/first-time-login/first-time-login.component';
 
 @NgModule({
   imports: [
@@ -70,7 +71,8 @@ import { EditUserComponent } from 'src/app/pages/manage-user/edit-user/edit-user
     ExcelUploadComponent,
     UserTableComponent,
     AddUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    FirstTimeLoginComponent
   ],
   providers: [],
 })

@@ -13,7 +13,7 @@ export class AuthService{
 
     login(username: string, password: string){
         const authData = { username: username, password:password};
-        this.http.post<{token : string, expiresIn: number, userId: string}>('http://localhost:3001/api/login',authData)
+        this.http.post<{token : string, expiresIn: number, userId: string, firstTimeLogin: boolean}>('http://localhost:3001/api/login',authData)
         .subscribe(response => {
             console.log("response "+ response.token);
             this.token = response.token;
@@ -27,9 +27,24 @@ export class AuthService{
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration*1000);
                 this.saveAuthenticationData(this.token, expirationDate,this.userId);
-                this.router.navigate(['/dashboard']);
+                //if first time user flag is up then we need to make user change password
+                if(response.firstTimeLogin){
+                    this.router.navigate(['/firstTimeLogin', this.userId]);
+                }else{
+                    this.router.navigate(['/dashboard']);       
+                }
+                
             }
         })
+    }
+
+    firstTimeLoginChangePassword(userID: string, password: string){
+        const authData = { userID: userID, password:password};
+        this.http.post<{message: string}>('http://localhost:3001/api/changePasswordFirstLogin',authData)
+        .subscribe(response =>{
+            this.logout();
+        })
+        
     }
 
     autoAuthenticatedUser(){

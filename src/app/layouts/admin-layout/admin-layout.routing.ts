@@ -10,6 +10,7 @@ import { BgpPeeringComponent } from 'src/app/pages/bgp-peering/bgp-peering.compo
 import { UserTableComponent } from 'src/app/pages/manage-user/user-listing/user-table.component';
 import { AuthGuard } from 'src/app/auth/auth.guard';
 import { LoginComponent } from 'src/app/pages/login/login.component';
+import { FirstTimeLoginComponent } from 'src/app/pages/login/first-time-login/first-time-login.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent, canActivate:[AuthGuard] },
@@ -18,6 +19,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'ip-list',        component: IpTableComponent, canActivate:[AuthGuard]},
     { path: 'bgp-peering',      component: BgpPeeringComponent, canActivate:[AuthGuard]},
     { path: 'user-table',      component: UserTableComponent, canActivate:[AuthGuard]},
+    { path: 'firstTimeLogin/:userID',      component: FirstTimeLoginComponent, canActivate:[AuthGuard]},
     { path: 'login',      component: LoginComponent},
 
 ];

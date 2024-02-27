@@ -30,8 +30,7 @@ export class EditUserComponent implements OnInit{
         console.log("userr get: " + this.user.userID)
         
     }
-
     onSaveUser(form: NgForm){
-        
+        this.manageuserservice.editUser(this.user.userID, form.value.username, form.value.email, form.value.role, form.value.status);
     }
 }

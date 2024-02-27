@@ -4,7 +4,7 @@ export interface User {
     //password : string;
     email : string;
     firstTimeLogin : boolean;
-    status : boolean;
+    status : string;
     role : string;
     //created_by : string;
     //created_datetime : Date;

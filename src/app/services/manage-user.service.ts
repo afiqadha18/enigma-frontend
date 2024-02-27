@@ -70,24 +70,8 @@ export class ManageUserService{
     }
 
     addUser(username: string, email: string, role: string){
-        const user: User = {userID:'', username: username, email:email, role:role,  firstTimeLogin:true, status:true}
+        const user: User = {userID:'', username: username, email:email, role:role,  firstTimeLogin:true, status:'Active'}
         this.http.post<{message: string, userID: string, firstTimeLogin: string, status: string}>('http://localhost:3001/api/user/adduser',user)
-        // .pipe(map((userAdded)=>{
-        //     return userAdded.user.map(userdata => {
-        //         return{
-        //             userID : userdata.userID,
-        //             username : userdata.username,
-        //             password : userdata.password,
-        //             email : userdata.email,
-        //             firstTimeLogin : userdata.firstTimeLogin,
-        //             status : userdata.status,
-        //             role : userdata.role,
-        //             created_by : userdata.created_by,
-        //             created_datetime : userdata.created_datetime,
-        //             lastLogin : userdata.lastLogin
-        //         }
-        //     })
-        // }))
         .subscribe(response => {
             console.log("user ID: " +response.userID);
             console.log("firstTimeLogin: " +response.firstTimeLogin);
@@ -100,8 +84,19 @@ export class ManageUserService{
         })
     }
 
-    editUser(username: string, email: string, role: string, status: string){
-        
+    editUser(userId:string ,username: string, email: string, role: string, status: string){
+        // var user_status=true;
+        // if(status === "Inactive"){
+        //     user_status= false;
+        // }
+        const user: User = {
+            userID: userId, username: username, email: email, role: role, status: status,
+            firstTimeLogin: false
+        }
+        this.http.put<{message: string}>('http://localhost:3001/api/user/edituser',user)
+        .subscribe(response => {
+            
+        })
     }
 
     getUserUpdateAsObservable(){

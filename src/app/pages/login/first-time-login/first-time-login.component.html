@@ -1,0 +1,32 @@
+<div class="center">
+    <mat-card>
+        <mat-card-content>
+            <form (submit)="onSavePassword(postSalaryData)" #postSalaryData="ngForm">
+                <mat-form-field>
+                    <input 
+                    matInput
+                    type="password"
+                    name="password"
+                    ngModel
+                    required
+                    placeholder="Password"
+                    #Password="ngModel">
+                    <mat-error *ngIf="Password.invalid">Please enter your Password</mat-error>
+                </mat-form-field>
+               <mat-form-field>
+                <input
+                    matInput
+                    type="password"
+                    name="rePassword"
+                    ngModel
+                    required
+                    placeholder="Re-enter your password"
+                    #rePassword="ngModel">
+                    <mat-error *ngIf="rePassword.invalid">Please re-enter your Password</mat-error>
+               </mat-form-field>
+               <button mat-raised-button color="accent" type="submit">Submit</button>
+            </form>
+            <p>{{errorMessage}}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
