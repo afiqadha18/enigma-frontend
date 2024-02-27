@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'user-cmp',
@@ -6,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'user.component.html'
 })
 
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit {
+  faEnvelope = faEnvelope;
+
     ngOnInit(){
     }
 }

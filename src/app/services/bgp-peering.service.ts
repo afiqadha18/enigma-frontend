@@ -15,8 +15,12 @@ export class BgpPeeringService {
     return this.http.get(this.api_path + '/getUploadData');
   }
 
-  uploadExcelIp(data: any) {
-    return this.http.post(this.api_path + '/fileUpload', data);
+  uploadExcelIp(formdata: any) {
+    return this.http.post(this.api_path + '/fileUpload', formdata);
+  }
+
+  addIpAddress(data: any) {
+    return this.http.post(this.api_path + '/addIp', data);
   }
 
   getUserList() {
