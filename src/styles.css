@@ -85,3 +85,7 @@ $purple-states-color:        darken($purple-color, 8%) !default; */
 .footr {
   height: 30px;
 }
+
+::ng-deep .swal-button--cancel, .swal-button--confirm {
+  border-radius: 20px !important;
+}
