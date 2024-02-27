@@ -86,4 +86,9 @@ export class ExcelUploadComponent{
   public onRemove() {
     this.files.pop();
   }
+
+  onUpload() {
+    console.log(this.files);
+
+  }
 }

@@ -15,7 +15,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Filename</th>
+                    <th>File Name</th>
                     <th>File Size</th>
                     <th>File Type</th>
                     <th>Action</th>
@@ -32,7 +32,7 @@
                     <td><strong>{{ item.filetype }}</strong></td>
                     <td>
                       <button type="button" class="btn btn-danger btn-round mr-2" (click)="onRemove()">Remove</button>
-                      <button type="button" class="btn btn-success btn-round">Upload</button>
+                      <button type="button" class="btn btn-success btn-round" (click)="onUpload()">Upload</button>
                     </td>
                 </tr>
             </tbody>
