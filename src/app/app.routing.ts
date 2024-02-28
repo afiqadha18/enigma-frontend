@@ -4,6 +4,10 @@ import { LoginComponent } from './pages/login/login.component';
 
 export const AppRoutes: Routes = [
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
@@ -20,6 +24,6 @@ export const AppRoutes: Routes = [
   {
     path: '**',
     redirectTo: 'dashboard'
-  },
+  }
  
 ]
