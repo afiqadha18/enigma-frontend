@@ -40,7 +40,7 @@ export class AuthService{
 
     firstTimeLoginChangePassword(userID: string, password: string){
         const authData = { userID: userID, password:password};
-        this.http.post<{message: string}>('http://localhost:3001/api/changePasswordFirstLogin',authData)
+        this.http.post<{message: string}>('http://localhost:3001/api/user/changePasswordFirstLogin',authData)
         .subscribe(response =>{
             this.logout();
         })
@@ -50,7 +50,7 @@ export class AuthService{
     autoAuthenticatedUser(){
         const authInformation = this.getAuthenticationData();
         const now = new Date();
-        if(!authInformation){
+        if(!authInformation){ 
             return;
         }
             const expiresIn = authInformation.expirationDate.getTime() - now.getTime();

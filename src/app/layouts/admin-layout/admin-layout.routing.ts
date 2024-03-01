@@ -19,7 +19,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'ip-list',        component: IpTableComponent, canActivate:[AuthGuard]},
     { path: 'bgp-peering',      component: BgpPeeringComponent, canActivate:[AuthGuard]},
     { path: 'user-table',      component: UserTableComponent, canActivate:[AuthGuard]},
-    { path: 'firstTimeLogin/:userID',      component: FirstTimeLoginComponent, canActivate:[AuthGuard]},
+    //{ path: 'firstTimeLogin/:userID',      component: FirstTimeLoginComponent, canActivate:[AuthGuard]},
     // { path: 'login',      component: LoginComponent},
 
 ];
