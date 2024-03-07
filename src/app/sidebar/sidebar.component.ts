@@ -15,7 +15,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/ip-list',       title: 'IP List',           icon:'nc-bullet-list-67',    class: '' },
     { path: '/bgp-peering',   title: 'BGP Peering',       icon:'nc-cloud-upload-94',    class: '' },
     { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
-    { path: '/user-table',          title: 'Manage User',      icon:'nc-single-02',  class: '' },
+    { path: '/user-table',    title: 'Manage User',       icon:'nc-single-02',  class: '' },
 ];
 
 @Component({

@@ -71,8 +71,7 @@ import { FirstTimeLoginComponent } from 'src/app/pages/login/first-time-login/fi
     ExcelUploadComponent,
     UserTableComponent,
     AddUserComponent,
-    EditUserComponent,
-    FirstTimeLoginComponent
+    EditUserComponent
   ],
   providers: [],
 })

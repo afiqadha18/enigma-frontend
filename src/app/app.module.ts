@@ -19,14 +19,18 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { MatGridListModule } from "@angular/material/grid-list";
+import { AuthGuard } from "./auth/auth.guard";
+import { FirstTimeLoginComponent } from "./pages/login/first-time-login/first-time-login.component";
+
 
 @NgModule({
     declarations: [
         AppComponent,
         AdminLayoutComponent,
-        LoginComponent
+        LoginComponent,
+        FirstTimeLoginComponent
     ],
-    providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true}],
+    providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},AuthGuard],
     bootstrap: [AppComponent],
     imports: [
         HttpClientModule,
