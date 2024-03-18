@@ -80,10 +80,25 @@
   color: var(--success-color) !important;
   font-size: 5px;
 }
+
 ::ng-deep .remove-btn-icon {
   color: var(--danger-color) !important;
 }
+
 ::ng-deep .add-btn-icon:hover, ::ng-deep .remove-btn-icon:hover {
   transform: scale(1.1) !important;
+}
+
+::ng-deep .close-icon {
+  padding: 18px 15px 10px 10px !important;
+  font-size: 20px !important;
+}
+
+::ng-deep .modal-title {
+  padding-bottom: 0 !important;
+}
+
+::ng-deep .modal-action-btn {
+  margin-right: 10px !important;
 }
 

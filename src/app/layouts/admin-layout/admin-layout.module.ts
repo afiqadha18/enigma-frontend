@@ -13,17 +13,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxFilesizeModule } from 'ngx-filesize';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AdminLayoutRoutes }        from './admin-layout.routing';
 import { DashboardComponent }       from '../../pages/dashboard/dashboard.component';
 import { UserComponent }            from '../../pages/user/user.component';
 import { IconsComponent }           from '../../pages/icons/icons.component';
-import { IpTableComponent }         from '../../pages/bgp-peering/ip-table/ip-table.component';
-import { IpUploadComponent }        from '../../pages/bgp-peering/ip-upload/ip-upload.component';
+import { IpTableComponent }         from '../../pages/ip-blackhole/ip-table/ip-table.component';
+import { IpUploadComponent }        from '../../pages/ip-blackhole/ip-upload/ip-upload.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { IpBlackholeComponent } from 'src/app/pages/ip-blackhole/ip-blackhole.component';
 import { BgpPeeringComponent } from 'src/app/pages/bgp-peering/bgp-peering.component';
-import { ExcelUploadComponent } from 'src/app/pages/bgp-peering/excel-upload/excel-upload.component';
+import { ExcelUploadComponent } from 'src/app/pages/ip-blackhole/excel-upload/excel-upload.component';
+import { ActivityLogComponent } from 'src/app/pages/activity-log/activity-log.component';
+import { AddPeerDialog } from 'src/app/pages/bgp-peering/add-peer/add-peer.component';
 
 @NgModule({
   imports: [
@@ -41,18 +45,25 @@ import { ExcelUploadComponent } from 'src/app/pages/bgp-peering/excel-upload/exc
     MatFormFieldModule,
     MatTabsModule,
     NgxFileDropModule,
-    NgxFilesizeModule
+    NgxFilesizeModule,
+    MatDialogModule
   ],
   declarations: [
     DashboardComponent,
     UserComponent,
     IconsComponent,
+    IpBlackholeComponent,
     IpTableComponent,
     IpUploadComponent,
     BgpPeeringComponent,
-    ExcelUploadComponent
+    ExcelUploadComponent,
+    ActivityLogComponent,
+    AddPeerDialog
   ],
   providers: [],
+  // entryComponents: [
+  //   AddPeerDialog
+  // ]
 })
 
 export class AdminLayoutModule {}

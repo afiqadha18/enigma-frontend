@@ -1,18 +1,94 @@
 <div class="row">
   <div class="col-md-12">
-    <div class="card card-user">
+    <div class="card">
       <div class="card-header">
-        <h5 class="card-title">Add IP Address</h5>
+        <h4 class="card-title">List of BGP Peer</h4>
       </div>
       <div class="card-body">
-        <mat-tab-group class="pl-2 pr-2" mat-stretch-tabs="false" mat-align-tabs="start">
-          <mat-tab label="Manual Add">
-            <ip-upload-cmp></ip-upload-cmp>
-          </mat-tab>
-          <mat-tab label="Excel Upload">
-            <excel-upload-cmp></excel-upload-cmp>
-          </mat-tab>
-        </mat-tab-group>
+        <div class="container-fluid">
+          <form class="row w-100">
+            <div class="input-group no-border w-25">
+              <input type="text" value="" class="form-control" placeholder="Filter">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="nc-icon nc-zoom-split search-icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="ml-auto">
+              <button class="btn btn-success btn-round" (click)="addPeer()"><i class="nc-icon nc-simple-add pr-2 pl-0"></i>Add BGP Peer</button>
+            </div>
+          </form>
+        </div>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="#">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element; let i = index"> {{ paginator.pageIndex * paginator.pageSize + i + 1 }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="peerName">
+              <th mat-header-cell *matHeaderCellDef> Peer Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.peerName}} </td>
+            </ng-container>
+            <ng-container matColumnDef="peerIp">
+              <th mat-header-cell *matHeaderCellDef> Peer IP </th>
+              <td mat-cell *matCellDef="let element"> {{element.peerAddress}} </td>
+            </ng-container>
+            <ng-container matColumnDef="peerAsn">
+              <th mat-header-cell *matHeaderCellDef> Peer ASN </th>
+              <td mat-cell *matCellDef="let element"> {{element.peerAsn}} </td>
+            </ng-container>
+            <ng-container matColumnDef="localAsn">
+              <th mat-header-cell *matHeaderCellDef> Local ASN </th>
+              <td mat-cell *matCellDef="let element"> {{element.localAsn}} </td>
+            </ng-container>
+            <ng-container matColumnDef="nextHopIp">
+              <th mat-header-cell *matHeaderCellDef> Next Hop IP </th>
+              <td mat-cell *matCellDef="let element"> {{element.nextHopIp}} </td>
+            </ng-container>
+            <ng-container matColumnDef="bgpCommunity">
+              <th mat-header-cell *matHeaderCellDef> BGP Community </th>
+              <td mat-cell *matCellDef="let element"> {{element.bgpCommunity}} </td>
+            </ng-container>
+            <ng-container matColumnDef="bgpPassword">
+              <th mat-header-cell *matHeaderCellDef> BGP Password </th>
+              <td mat-cell *matCellDef="let element"> {{element.bgpPassword}} </td>
+            </ng-container>
+            <ng-container matColumnDef="dataCenter">
+              <th mat-header-cell *matHeaderCellDef> Data Center </th>
+              <td mat-cell *matCellDef="let element"> {{element.dataCenter}} </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Status </th>
+              <td mat-cell *matCellDef="let element">
+                <mat-chip-listbox>
+                  <mat-chip class="chip-approved" *ngIf="element.status == 'active'">{{element.status}}</mat-chip>
+                  <mat-chip class="chip-pending" *ngIf="element.status == 'ended'">{{element.status}}</mat-chip>
+                </mat-chip-listbox>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef> Action </th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <button mat-icon-button class="action-icon"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button class="action-icon"><mat-icon>delete</mat-icon></button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr> -->
+          </table>
+          <div *ngIf="dataSource.data.length == 0" class="mt-2 d-flex justify-content-center">
+             <!-- <i class="nc-icon nc-alert-circle-i mr-1 align-self-center"></i> -->
+             <p class="nc-icon mb-0 align-self-center"><em>No items found!</em></p>
+          </div>
+          <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+        </div>
       </div>
     </div>
   </div>
+
