@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">List of Activities</h4>
+      </div>
+      <div class="card-body">
+        <div class="container-fluid">
+          <form class="row w-25">
+            <div class="input-group no-border">
+              <input type="text" value="" class="form-control" placeholder="Filter">
+              <div class="input-group-append">
+                <div class="input-group-text">
+                  <i class="nc-icon nc-zoom-split search-icon"></i>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="#">
+              <th mat-header-cell *matHeaderCellDef> No. </th>
+              <td mat-cell *matCellDef="let element; let i = index"> {{ paginator.pageIndex * paginator.pageSize + i + 1 }}
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="ip_address">
+              <th mat-header-cell *matHeaderCellDef> Datetime </th>
+              <td mat-cell *matCellDef="let element"> {{element.activityDate | date:'medium' }} </td>
+            </ng-container>
+            <ng-container matColumnDef="duration">
+              <th mat-header-cell *matHeaderCellDef> Username </th>
+              <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef> Events </th>
+              <td mat-cell *matCellDef="let element"> {{element.events}} </td>
+              <!-- <td mat-cell *matCellDef="let element"> {{element.status}} </td> -->
+            </ng-container>
+            <ng-container matColumnDef="uploadedBy">
+              <th mat-header-cell *matHeaderCellDef> Execution </th>
+                <td mat-cell *matCellDef="let element">
+                <mat-chip-listbox>
+                  <mat-chip class="chip-approved" *ngIf="element.execution == 'start'">{{element.execution}}</mat-chip>
+                  <mat-chip class="chip-pending" *ngIf="element.execution == 'ended'">{{element.execution}}</mat-chip>
+                  <mat-chip class="chip-approved" *ngIf="element.execution == 'active'">{{element.execution}}</mat-chip>
+                </mat-chip-listbox>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="uploadedOn">
+              <th mat-header-cell *matHeaderCellDef> Error </th>
+              <td mat-cell *matCellDef="let element"> {{element.error}} </td>
+            </ng-container>
+            <ng-container matColumnDef="remarks">
+              <th mat-header-cell *matHeaderCellDef> Remarks </th>
+              <td mat-cell *matCellDef="let element"> {{element.remarks}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- <tr class="mat-row" *matNoDataRow>
+              <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr> -->
+          </table>
+          <div *ngIf="dataSource.data.length == 0" class="mt-2 d-flex justify-content-center">
+             <!-- <i class="nc-icon nc-alert-circle-i mr-1 align-self-center"></i> -->
+             <p class="nc-icon mb-0 align-self-center"><em>No items found!</em></p>
+          </div>
+          <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+    </div>
+  </div>
