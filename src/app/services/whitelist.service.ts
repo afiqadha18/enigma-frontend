@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { Whitelist } from '../pages/ip-whitelist/ip-whitelist.component';
+import { Whitelist } from '../model/whitelist.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,7 @@ export class WhitelistService {
   }
 
   deleteWhitelist(ipAddress: string) {
-    return this.http.delete(`${this.api_path}/ipWhitelist'/${ipAddress}`);
+    return this.http.delete(`${this.api_path}/ipWhitelist/${ipAddress}`);
   }
 
 }

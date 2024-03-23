@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
-import { Peer } from '../pages/bgp-peering/bgp-peering.component';
+import { Peer } from '../model/peer.model';
 
 @Injectable({
   providedIn: 'root'

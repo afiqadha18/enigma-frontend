@@ -6,7 +6,7 @@ import { AuthService } from "../../services/auth.service";
    // selector: 'app-login',
     moduleId: module.id,
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    // styleUrls: ['./login.component.css']
 })
 
 export class LoginComponent{

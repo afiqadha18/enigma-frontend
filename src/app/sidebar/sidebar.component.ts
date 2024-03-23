@@ -17,8 +17,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/bgp-peering',     title: 'BGP Peering',       icon:'nc-vector',             class: '' },
     { path: '/ip-whitelist',    title: 'IP Whitelist',      icon:'nc-lock-circle-open',   class: '' },
     { path: '/activity-log',    title: 'Activity Log',      icon:'nc-badge',              class: '' },
-    { path: '/user-table',      title: 'Manage User',       icon:'nc-single-02',          class: '' },
-    { path: '/user',            title: 'User Profile',      icon:'nc-single-02',          class: '' },
+    // { path: '/user',            title: 'User Profile',      icon:'nc-single-02',          class: '' },
     { path: '/user-table',      title: 'Manage User',       icon:'nc-single-02',          class: '' },
 ];
 

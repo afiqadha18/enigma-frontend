@@ -17,7 +17,7 @@ import { IpWhitelistComponent } from 'src/app/pages/ip-whitelist/ip-whitelist.co
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent, canActivate:[AuthGuard]},
-    { path: 'user',           component: UserComponent, canActivate:[AuthGuard]},
+    // { path: 'user',           component: UserComponent, canActivate:[AuthGuard]},
     { path: 'icons',          component: IconsComponent, canActivate:[AuthGuard]},
     { path: 'ip-blackhole',   component: IpTableComponent, canActivate:[AuthGuard]},
     { path: 'ip-prefixes',    component: IpBlackholeComponent, canActivate:[AuthGuard]},

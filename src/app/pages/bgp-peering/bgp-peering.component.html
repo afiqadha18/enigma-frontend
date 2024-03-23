@@ -28,7 +28,7 @@
               </td>
             </ng-container>
             <ng-container matColumnDef="peerName">
-              <th mat-header-cell *matHeaderCellDef> Peer Name </th>
+              <th mat-header-cell *matHeaderCellDef class="custom-col-width"> Peer Name </th>
               <td mat-cell *matCellDef="let element"> {{element.peerName}} </td>
             </ng-container>
             <ng-container matColumnDef="peerIp">
@@ -56,7 +56,7 @@
               <td mat-cell *matCellDef="let element"> {{element.bgpPassword | password}} </td>
             </ng-container>
             <ng-container matColumnDef="dataCenter">
-              <th mat-header-cell *matHeaderCellDef> Data Center </th>
+              <th mat-header-cell *matHeaderCellDef class="custom-col-width"> Data Center </th>
               <td mat-cell *matCellDef="let element"> {{element.dataCenter}} </td>
             </ng-container>
             <ng-container matColumnDef="status">
@@ -67,6 +67,14 @@
                   <mat-chip class="chip-pending" *ngIf="element.status == 'ended'">{{element.status}}</mat-chip>
                 </mat-chip-listbox>
               </td>
+            </ng-container>
+            <ng-container matColumnDef="lastUpdatedBy">
+              <th mat-header-cell *matHeaderCellDef> Action By </th>
+              <td mat-cell *matCellDef="let element"> {{element.lastUpdatedBy }} </td>
+            </ng-container>
+            <ng-container matColumnDef="lastUpdatedOn">
+              <th mat-header-cell *matHeaderCellDef class="custom-col-width"> Last Modified Date</th>
+              <td mat-cell *matCellDef="let element"> {{element.lastUpdatedOn | date: 'medium'}} </td>
             </ng-container>
             <ng-container matColumnDef="action">
               <th mat-header-cell *matHeaderCellDef> Action </th>

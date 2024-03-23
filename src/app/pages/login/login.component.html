@@ -1,25 +1,59 @@
-<mat-grid-list cols="2"  rowHeight="2:1">
-    <mat-card class="login-card">
-        <mat-card-header>
-            <div class="enigma-logo">
-                <img mat-card-sm-image src="assets/img/e-logo.png">
+<!-- <mat-grid-list cols="2"  rowHeight="2:1">
+  <mat-card class="login-card">
+    <mat-card-header>
+        <div class="enigma-logo">
+            <img mat-card-sm-image src="assets/img/e-logo.png">
+        </div>
+        <div class="enigma-title">
+            <h1>Enigma</h1>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+    <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+        <mat-form-field>
+            <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
+            <mat-error *ngIf="usernameInput.invalid">Please Enter your Username</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput name="password" ngModel type="password"  placeholder="Password" #passwordInput="ngModel" required>
+            <mat-error *ngIf="passwordInput.invalid">Please Enter your Password</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="accent" type="submit">Login</button>
+    </form>
+    </mat-card-content>
+</mat-card>
+</mat-grid-list> -->
+
+<div class="login-div d-flex align-items-center">
+  <div class="card login-card" style="margin-top: auto; margin-bottom: auto;">
+    <div class="card-header">
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="logo-div"><img class="enigma-logo" src="assets/img/e-logo.png"></div>
+        <div class="enigma-title"><h1>nigma</h1></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+          <div class="w-100 mt-2 form-body">
+            <div class="w-98 ml-2 row d-flex align-items-center">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Username</label>
+                  <input class="form-control" name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Password</label>
+                  <input class="form-control" name="password" ngModel type="password"  placeholder="Password" #passwordInput="ngModel" required>
+                </div>
+              </div>
             </div>
-            <div class="enigma-title">
-                <h1>Enigma</h1>
-            </div>
-        </mat-card-header>
-        <mat-card-content>
-        <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
-            <mat-form-field>
-                <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
-                <mat-error *ngIf="usernameInput.invalid">Please Enter your Username</mat-error>
-            </mat-form-field>
-            <mat-form-field>
-                <input matInput name="password" ngModel type="password"  placeholder="Password" #passwordInput="ngModel" required>
-                <mat-error *ngIf="passwordInput.invalid">Please Enter your Password</mat-error>
-            </mat-form-field>
-            <button mat-raised-button color="accent" type="submit">Login</button>
-        </form>
-        </mat-card-content>
-    </mat-card>
-</mat-grid-list>
+          </div>
+          <div class="w-100 mt-2 d-flex justify-content-end">
+            <button class="btn btn-primary btn-round mr-2" type="submit">Login</button>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

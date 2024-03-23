@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { BgpPeeringService } from 'src/app/services/bgp-peering.service';
 import Swal from 'sweetalert2';
+import { WhitelistService } from 'src/app/services/whitelist.service';
 
 @Component({
   selector: 'delete-whitelist-dialog',
@@ -10,12 +10,12 @@ import Swal from 'sweetalert2';
 })
 export class DeleteWhitelistDialog implements OnInit{
   constructor(public dialogRef: MatDialogRef<DeleteWhitelistDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder,
-  private bgpService: BgpPeeringService) { }
+  private whitelistService: WhitelistService) { }
 
   deleteWhitelistForm!: FormGroup;
 
   ngOnInit() {
-    console.log(this.data);
+    // console.log(this.data);
     this.deleteWhitelistForm = this.formBuilder.group({
       listId: new FormControl({ value: this.data.listId, disabled: false }),
       ipAddress: new FormControl({ value: this.data.ipAddress, disabled: false }),
@@ -30,9 +30,9 @@ export class DeleteWhitelistDialog implements OnInit{
   }
 
   onDelete() {
-    let deleteId = this.deleteWhitelistForm.value.peerId;
+    let deleteId = this.deleteWhitelistForm.value.listId;
     console.log(deleteId);
-    this.bgpService.deletePeer(deleteId)
+    this.whitelistService.deleteWhitelist(deleteId)
       .subscribe((res: any) => {
         console.log(res);
         Swal.fire({
@@ -46,12 +46,11 @@ export class DeleteWhitelistDialog implements OnInit{
           if (result.dismiss === Swal.DismissReason.timer) {
             // this.router.navigate(['/bgp-peering']);
             this.dialogRef.close();
-            let updatedPeer = this.bgpService.peerList.filter(peers => peers.peerId !== deleteId);
-            this.bgpService.peerList = updatedPeer;
-            this.bgpService.peerUpdated.next([...updatedPeer]);
+            let updatedList = this.whitelistService.whitelist.filter(list => list.listId !== deleteId);
+            this.whitelistService.whitelist = updatedList;
+            this.whitelistService.whitelistUpdated.next([...updatedList]);
           }
         });
-
       },
       (error) => {
         console.log(error);

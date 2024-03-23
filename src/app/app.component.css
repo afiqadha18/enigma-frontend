@@ -5,3 +5,35 @@
 ::ng-deep .swal2-container {
   z-index: 9999 !important;
 }
+
+::ng-deep .login-div {
+  position: absolute !important;
+  height: 100% !important;
+  width: 100vw !important;
+  background-color: #f4f3ef !important;
+}
+
+::ng-deep .login-card {
+  max-width: 30vw !important;
+  text-align: left !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+::ng-deep .enigma-title {
+  text-align: center !important;
+  display: flex !important;
+  /* margin: auto !important; */
+}
+
+::ng-deep .enigma-title h1 {
+  margin-bottom: 0 !important;
+}
+
+::ng-deep .enigma-logo {
+  max-width: 90% !important;
+}
+
+::ng-deep .logo-div {
+  max-width: 10% !important;
+}

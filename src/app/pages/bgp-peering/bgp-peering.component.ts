@@ -7,18 +7,7 @@ import { AddPeerDialog } from './add-peer/add-peer.component';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { EditPeerDialog } from './edit-peer/edit-peer.component';
 import { DeletePeerDialog } from './delete-peer/delete-peer.component';
-
-export interface Peer {
-  peerId: number;
-  peerName: string,
-  peerAddress: string,
-  peerAsn: number,
-  localAsn: number,
-  nextHopIp: string,
-  bgpCommunity: string,
-  bgpPassword: string,
-  dataCenter: string
-}
+import { Peer } from '../../model/peer.model';
 
 @Component({
     selector: 'bgp-peering-cmp',
@@ -29,7 +18,7 @@ export interface Peer {
 export class BgpPeeringComponent implements OnInit{
  @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['#', 'peerName', 'peerIp', 'peerAsn', 'localAsn', 'nextHopIp', 'bgpCommunity', 'bgpPassword', 'dataCenter', 'status', 'action'];
+  displayedColumns: string[] = ['#', 'peerName', 'peerIp', 'peerAsn', 'localAsn', 'nextHopIp', 'bgpCommunity', 'bgpPassword', 'dataCenter', 'status', 'lastUpdatedBy', 'lastUpdatedOn', 'action'];
   dataSource: any = new MatTableDataSource();
   peer: Peer[] = [];
   private peerSub: Subscription | undefined;

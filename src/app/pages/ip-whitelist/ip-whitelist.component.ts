@@ -6,14 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { AddWhitelistDialog } from './add-whitelist/add-whitelist.component';
 import { DeleteWhitelistDialog } from './delete-whitelist/delete-whitelist.component';
-
-export interface Whitelist {
-  listId: number;
-  ipAddress: string,
-  description: string,
-  addedBy: string,
-  addedDate: string
-}
+import { Whitelist } from 'src/app/model/whitelist.model';
 
 @Component({
     selector: 'ip-whitelist-cmp',

@@ -15,11 +15,13 @@ export class AddWhitelistDialog implements OnInit{
   private whitelistService: WhitelistService, private authService: AuthService) { }
 
   addWhitelistForm!: FormGroup;
+  tempForm!: FormGroup;
 
   ngOnInit() {
     this.addWhitelistForm = this.formBuilder.group({
       ipAddress: new FormControl({ value: '', disabled: false}),
       description: new FormControl({ value: '', disabled: false}),
+      username: new FormControl({ value: this.authService.getUsername(), disabled: false}),
       addedBy: new FormControl({ value: this.authService.getUserId(), disabled: false}),
       addedDate: new FormControl({ value: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'), disabled: false})
     })
@@ -43,9 +45,14 @@ export class AddWhitelistDialog implements OnInit{
           timerProgressBar: true,
         }).then((result) => {
           if (result.dismiss === Swal.DismissReason.timer) {
-            // this.router.navigate(['/bgp-peering']);
             this.dialogRef.close();
-            this.whitelistService.whitelist.push(this.addWhitelistForm.value);
+            this.tempForm = this.formBuilder.group({
+              ipAddress: new FormControl({ value: this.addWhitelistForm.value.ipAddress, disabled: false}),
+              description: new FormControl({ value: this.addWhitelistForm.value.description, disabled: false}),
+              addedBy: new FormControl({ value: this.addWhitelistForm.value.username, disabled: false}),
+              addedDate: new FormControl({ value: this.addWhitelistForm.value.addedDate, disabled: false})
+            })
+            this.whitelistService.whitelist.push(this.tempForm.value);
             this.whitelistService.whitelistUpdated.next([...this.whitelistService.whitelist]);
           }
         });

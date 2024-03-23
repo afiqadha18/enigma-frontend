@@ -11,7 +11,7 @@
       <li>IP Address: {{data.ipAddress}}</li>
       <li>Description: {{data.description}}</li>
       <li>Added By: {{data.addedBy}}</li>
-      <li>Added Date: {{data.addedDate}}</li>
+      <li>Added Date: {{data.addedDate | date: 'medium'}}</li>
     </ul>
   </mat-dialog-content>
   <mat-dialog-actions>
