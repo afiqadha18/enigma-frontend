@@ -1,0 +1,31 @@
+.fristtimelogin-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    display: flex;
+  }
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    display: block;
+  }
+
+  md-grid-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+.fristtimelogin-title {
+    text-align: center;
+    display: flex;  
+}
+.warning-password {
+  margin-top: 2em;
+}
+.error-message {
+  color: red;
+}

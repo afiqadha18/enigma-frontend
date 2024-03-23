@@ -1,0 +1,25 @@
+<mat-grid-list cols="2"  rowHeight="2:1">
+    <mat-card class="login-card">
+        <mat-card-header>
+            <div class="enigma-logo">
+                <img mat-card-sm-image src="assets/img/e-logo.png">
+            </div>
+            <div class="enigma-title">
+                <h1>Enigma</h1>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+        <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
+            <mat-form-field>
+                <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
+                <mat-error *ngIf="usernameInput.invalid">Please Enter your Username</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput name="password" ngModel type="password"  placeholder="Password" #passwordInput="ngModel" required>
+                <mat-error *ngIf="passwordInput.invalid">Please Enter your Password</mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="accent" type="submit">Login</button>
+        </form>
+        </mat-card-content>
+    </mat-card>
+</mat-grid-list>
