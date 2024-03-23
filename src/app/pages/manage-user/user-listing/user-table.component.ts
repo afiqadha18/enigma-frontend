@@ -7,6 +7,7 @@ import { ManageUserService } from "../../../services/manage-user.service";
 
 import { Subscription } from 'rxjs';
 import { EditUserComponent } from "../edit-user/edit-user.component";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
     selector:'app-user-table',
