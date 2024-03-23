@@ -11,7 +11,7 @@ export class WhitelistService {
   whitelistUpdated = new Subject<Whitelist[]>();
   constructor(private http: HttpClient) { }
 
-  api_path = 'http://localhost:3000/api/whitelist';
+  api_path = 'http://localhost:3001/api/whitelist';
 
   getWhitelistedIP() {
     this.http.get(this.api_path + '/ipWhitelist')

@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class MasterService {
   constructor(private http: HttpClient) { }
 
-  activity_path = 'http://localhost:3000/api/logs';
+  activity_path = 'http://localhost:3001/api/logs';
 
   getActivityLogs() {
     return this.http.get(this.activity_path + '/getActivityLogs');
