@@ -56,8 +56,9 @@ import { MatDialogModule } from "@angular/material/dialog";
         MatDialogModule,
         MatInputModule,
         FormsModule,
-        MatGridListModule
+        MatGridListModule,
         
+        FixedPluginModule
     ]
 })
 export class AppModule { }

@@ -1,0 +1,75 @@
+<div class="mb-2">
+  <div class="d-flex justify-content-between">
+    <!-- <div mat-dialog-title class="modal-title"><i class="nc-icon nc-simple-add pr-2 pl-0"></i>Add New Peering</div> -->
+    <div mat-dialog-title class="modal-title">Add New Peering</div>
+    <div mat-dialog-close><i class="nc-icon nc-simple-remove close-icon"></i></div>
+  </div>
+  <hr>
+  <form [formGroup]="addPeerForm">
+    <div class="w-100 mt-2 form-body">
+      <div class="w-98 ml-2 row d-flex align-items-center">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Peer Name</label>
+            <input type="text" class="form-control" formControlName="peerName" value=""/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Peer IP</label>
+            <input type="text" class="form-control" formControlName="peerAddress" value=""/>
+          </div>
+        </div>
+      </div>
+      <div class="w-98 ml-2 row d-flex align-items-center">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Peer ASN</label>
+            <input type="number" class="form-control" formControlName="peerAsn" value=""/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Local ASN</label>
+            <input type="number" class="form-control" formControlName="localAsn" value=""/>
+          </div>
+        </div>
+      </div>
+      <div class="w-98 ml-2 row d-flex align-items-center">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Next Hop IP</label>
+            <input type="text" class="form-control" formControlName="nextHopIp" value=""/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>BGP Community</label>
+            <input type="text" class="form-control" formControlName="bgpCommunity" value=""/>
+          </div>
+        </div>
+      </div>
+      <div class="w-98 ml-2 row d-flex align-items-center">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>BGP Password</label>
+            <input type="password" class="form-control" formControlName="bgpPassword" value=""/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Data Center</label>
+            <input type="text" class="form-control" formControlName="dataCenter" value=""/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <mat-dialog-actions>
+    <div class="ml-auto">
+      <button class="btn btn-primary btn-round mr-1" (click)="onNoClick()">Cancel</button>
+      <button class="btn btn-success btn-round modal-action-btn" (click)="onSubmit()">Submit</button>
+    </div>
+  </mat-dialog-actions>
+</div>
+
