@@ -8,15 +8,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule} from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input'
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { NgxFileDropModule } from 'ngx-file-drop';
 import { NgxFilesizeModule } from 'ngx-filesize';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { AdminLayoutRoutes }        from './admin-layout.routing';
+import { AdminLayoutRoutes, AppRoutingModule }        from './admin-layout.routing';
 import { DashboardComponent }       from '../../pages/dashboard/dashboard.component';
 import { UserComponent }            from '../../pages/user/user.component';
 import { IconsComponent }           from '../../pages/icons/icons.component';
@@ -27,6 +31,11 @@ import { IpWhitelistComponent }     from 'src/app/pages/ip-whitelist/ip-whitelis
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { IpBlackholeComponent } from 'src/app/pages/ip-blackhole/ip-blackhole.component';
 import { BgpPeeringComponent } from 'src/app/pages/bgp-peering/bgp-peering.component';
+import { UserTableComponent } from 'src/app/pages/manage-user/user-listing/user-table.component';
+import { AddUserComponent } from 'src/app/pages/manage-user/add-user/add-user.component';
+import { LoginComponent } from 'src/app/pages/login/login.component';
+import { EditUserComponent } from 'src/app/pages/manage-user/edit-user/edit-user.component';
+import { FirstTimeLoginComponent } from 'src/app/pages/login/first-time-login/first-time-login.component';
 import { ExcelUploadComponent } from 'src/app/pages/ip-blackhole/excel-upload/excel-upload.component';
 import { ActivityLogComponent } from 'src/app/pages/activity-log/activity-log.component';
 import { AddPeerDialog } from 'src/app/pages/bgp-peering/add-peer/add-peer.component';
@@ -52,7 +61,12 @@ import { AddWhitelistDialog } from 'src/app/pages/ip-whitelist/add-whitelist/add
     MatTabsModule,
     NgxFileDropModule,
     NgxFilesizeModule,
+    MatCardModule,
     MatDialogModule,
+    MatSelectModule,
+    AppRoutingModule,
+    MatInputModule,
+    MatGridListModule,
     MatMenuModule
   ],
   declarations: [
@@ -64,6 +78,9 @@ import { AddWhitelistDialog } from 'src/app/pages/ip-whitelist/add-whitelist/add
     IpUploadComponent,
     BgpPeeringComponent,
     ExcelUploadComponent,
+    UserTableComponent,
+    AddUserComponent,
+    EditUserComponent,
     ActivityLogComponent,
     AddPeerDialog,
     EditPeerDialog,

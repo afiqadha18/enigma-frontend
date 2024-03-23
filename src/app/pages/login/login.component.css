@@ -1,0 +1,35 @@
+.login-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+    display: flex;
+  }
+  mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  mat-form-field {
+    /* align horizontal */
+    display: block;
+  }
+
+  md-grid-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+.enigma-title {
+    text-align: center;
+    display: flex;  
+}
+h1 {
+    text-align: center;
+    margin: auto;
+  }
+
+img {
+    height: 90%;
+    max-width: 90%;
+   }

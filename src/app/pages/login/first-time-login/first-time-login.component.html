@@ -1,0 +1,39 @@
+<mat-grid-list cols="2"  rowHeight="2:1">
+    <mat-card class="fristtimelogin-card">
+        <mat-card-header>
+            <div>
+                <h5>First Time Login Change Password</h5>
+            </div>
+        </mat-card-header>
+        <mat-card-content>
+            <form (submit)="onSavePassword(postSalaryData)" #postSalaryData="ngForm">
+                <mat-form-field>
+                    <input 
+                    matInput
+                    type="password"
+                    name="password"
+                    ngModel
+                    required
+                    placeholder="Password"
+                    #Password="ngModel">
+                    <mat-error *ngIf="Password.invalid">Please enter your Password</mat-error>
+                </mat-form-field>
+               <mat-form-field>
+                <input
+                    matInput
+                    type="password"
+                    name="rePassword"
+                    ngModel
+                    required
+                    placeholder="Re-enter your password"
+                    #rePassword="ngModel">
+                    <mat-error *ngIf="rePassword.invalid">Please re-enter your Password</mat-error>
+               </mat-form-field>
+               <button mat-raised-button color="accent" type="submit">Submit</button>
+            </form>
+            <div class="warning-password">
+                <p class="error-message">{{errorMessage}}</p>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</mat-grid-list>

@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Edit User</h1>
+<div mat-dialog-content>
+    <div class="center">
+        <mat-card>
+            <mat-card-content>
+                <form (submit)="onSaveUser(postSalaryData)" #postSalaryData="ngForm">
+                    <mat-form-field>
+                        <input 
+                        matInput
+                        type="text"
+                        name="username"
+                        [ngModel]="user.username"
+                        required
+                        placeholder="Username"
+                        #username="ngModel">
+                        <mat-error *ngIf="username.invalid">Please enter Username</mat-error>
+                    </mat-form-field>
+                   <mat-form-field>
+                    <input
+                        matInput
+                        type="email"
+                        name="email"
+                        [ngModel]="user.email"
+                        required
+                        placeholder="E-mail"
+                        #email="ngModel">
+                        <mat-error *ngIf="email.invalid">Please enter User Email</mat-error>
+                   </mat-form-field>
+                   <mat-form-field>
+                    <mat-label>Role</mat-label>
+                    <mat-select name="role" [ngModel]="user.role" #role="ngModel">
+                      <mat-option *ngFor="let role of roleData" [value]="role.role">{{role.description}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Status</mat-label>
+                    <mat-select name="status" [ngModel]="user.status" #status="ngModel">
+                      <mat-option value="Active">Active</mat-option>
+                      <mat-option value="Inactive">Inactive</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                   <button mat-raised-button color="accent" [mat-dialog-close]="" type="submit">Save</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    
+</div>

@@ -2,6 +2,8 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/co
 import { ROUTES } from '../../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 import { Location} from '@angular/common';
+import { AuthService } from 'src/app/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     moduleId: module.id,
@@ -15,17 +17,24 @@ export class NavbarComponent implements OnInit{
     private nativeElement: Node;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    isUserAuthenticated= false;
+    private isUserAuthenticatedListener: Subscription | undefined;
 
     public isCollapsed = true;
     @ViewChild("navbar-cmp", {static: false}) button: any;
 
-    constructor(location:Location, private renderer : Renderer2, private element : ElementRef, private router: Router) {
+    constructor(location:Location, private renderer : Renderer2, private element : ElementRef, private router: Router, private authService: AuthService) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
     }
 
     ngOnInit(){
+        this.isUserAuthenticated = this.authService.getUserIsAuthenticated();
+        this.isUserAuthenticatedListener = this.authService.getAuthStatusListener()
+        .subscribe(isAuth => {
+          this.isUserAuthenticated = isAuth;
+        });
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
@@ -90,6 +99,10 @@ export class NavbarComponent implements OnInit{
           navbar.classList.remove('bg-white');
         }
 
+      }
+
+      logout(){
+        this.authService.logout();
       }
 
 }

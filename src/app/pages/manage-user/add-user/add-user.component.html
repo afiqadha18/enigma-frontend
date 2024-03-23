@@ -1,0 +1,41 @@
+<h1 mat-dialog-title>Add Salary</h1>
+<div mat-dialog-content>
+    <div class="center">
+        <mat-card>
+            <mat-card-content>
+                <form (submit)="onSaveUser(postSalaryData)" #postSalaryData="ngForm">
+                    <mat-form-field>
+                        <input 
+                        matInput
+                        type="text"
+                        name="username"
+                        ngModel
+                        required
+                        placeholder="Username"
+                        #username="ngModel">
+                        <mat-error *ngIf="username.invalid">Please enter Username</mat-error>
+                    </mat-form-field>
+                   <mat-form-field>
+                    <input
+                        matInput
+                        type="email"
+                        name="email"
+                        ngModel
+                        required
+                        placeholder="E-mail"
+                        #email="ngModel">
+                        <mat-error *ngIf="email.invalid">Please enter User Email</mat-error>
+                   </mat-form-field>
+                   <mat-form-field>
+                    <mat-label>Select</mat-label>
+                    <mat-select name="role" ngModel #role="ngModel">
+                      <mat-option *ngFor="let role of roleData" [value]="role.role">{{role.description}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                   <button mat-raised-button color="accent" [mat-dialog-close]="" type="submit">Submit</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    
+</div>
