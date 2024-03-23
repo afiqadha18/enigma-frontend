@@ -8,13 +8,14 @@ export interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard',     title: 'Dashboard',         icon:'nc-chart-pie-36',       class: '' },
-    { path: '/icons',         title: 'Icons',             icon:'nc-diamond',    class: '' },
-    { path: '/ip-blackhole',  title: 'IP Blackhole',      icon:'nc-bullet-list-67',    class: '' },
-    { path: '/ip-prefixes',   title: 'IP Prefixes',       icon:'nc-cloud-upload-94',    class: '' },
-    { path: '/bgp-peering',   title: 'BGP Peering',       icon:'nc-vector',    class: '' },
-    { path: '/activity-log',  title: 'Activity Log',      icon:'nc-badge',    class: '' },
-    { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
+    { path: '/dashboard',       title: 'Dashboard',         icon:'nc-chart-pie-36',       class: '' },
+    { path: '/icons',           title: 'Icons',             icon:'nc-diamond',            class: '' },
+    { path: '/ip-blackhole',    title: 'IP Blackhole',      icon:'nc-bullet-list-67',     class: '' },
+    { path: '/ip-prefixes',     title: 'IP Prefixes',       icon:'nc-cloud-upload-94',    class: '' },
+    { path: '/bgp-peering',     title: 'BGP Peering',       icon:'nc-vector',             class: '' },
+    { path: '/ip-whitelist',    title: 'IP Whitelist',      icon:'nc-lock-circle-open',   class: '' },
+    { path: '/activity-log',    title: 'Activity Log',      icon:'nc-badge',              class: '' },
+    { path: '/user',            title: 'User Profile',      icon:'nc-single-02',          class: '' },
 ];
 
 @Component({

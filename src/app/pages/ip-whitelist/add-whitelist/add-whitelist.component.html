@@ -1,0 +1,45 @@
+<div class="mb-2">
+  <div class="d-flex justify-content-between">
+    <!-- <div mat-dialog-title class="modal-title"><i class="nc-icon nc-simple-add pr-2 pl-0"></i>Add New Peering</div> -->
+    <div mat-dialog-title class="modal-title">Add Whitelist IP</div>
+    <div mat-dialog-close><i class="nc-icon nc-simple-remove close-icon"></i></div>
+  </div>
+  <hr>
+  <form [formGroup]="addWhitelistForm">
+    <div class="w-100 mt-2 form-body">
+      <div class="w-98 ml-2 row d-flex align-items-center">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>IP Address</label>
+            <input type="text" class="form-control" formControlName="ipAddress" value=""/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Description</label>
+            <input type="text" class="form-control" formControlName="description" value=""/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Added By</label>
+            <input type="text" class="form-control" formControlName="addedBy" value="" readonly/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Added Date</label>
+            <input type="text" class="form-control" formControlName="addedDate" value="" readonly/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <mat-dialog-actions>
+    <div class="ml-auto">
+      <button class="btn btn-primary btn-round mr-1" (click)="onNoClick()">Cancel</button>
+      <button class="btn btn-success btn-round modal-action-btn" (click)="onSubmit()">Submit</button>
+    </div>
+  </mat-dialog-actions>
+</div>
+

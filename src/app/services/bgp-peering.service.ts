@@ -1,12 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { Peer } from '../pages/bgp-peering/bgp-peering.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BgpPeeringService {
+  peerList: Peer[]= [];
+  peerUpdated = new Subject<Peer[]>();
   constructor(private http: HttpClient) { }
 
   api_path = 'http://localhost:3000/api/upload';
@@ -29,7 +32,15 @@ export class BgpPeeringService {
   }
 
   getPeerList() {
-    return this.http.get('http://localhost:3000/api/bgp/bgpPeer');
+    this.http.get('http://localhost:3000/api/bgp/bgpPeer')
+      .subscribe((peerData: any) => {
+        this.peerList = peerData.data;
+        this.peerUpdated.next([...this.peerList]);
+      })
+  }
+
+  getPeerUpdateListener() {
+    return this.peerUpdated.asObservable();
   }
 
   addPeer(data: any) {

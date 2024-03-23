@@ -8,6 +8,7 @@ import { IpTableComponent } from '../../pages/ip-blackhole/ip-table/ip-table.com
 import { IpBlackholeComponent } from 'src/app/pages/ip-blackhole/ip-blackhole.component';
 import { BgpPeeringComponent } from 'src/app/pages/bgp-peering/bgp-peering.component';
 import { ActivityLogComponent } from 'src/app/pages/activity-log/activity-log.component';
+import { IpWhitelistComponent } from 'src/app/pages/ip-whitelist/ip-whitelist.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -16,5 +17,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'ip-blackhole',   component: IpTableComponent},
     { path: 'ip-prefixes',    component: IpBlackholeComponent},
     { path: 'bgp-peering',    component: BgpPeeringComponent},
+    { path: 'ip-whitelist',   component: IpWhitelistComponent},
     { path: 'activity-log',   component: ActivityLogComponent}
 ];

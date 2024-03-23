@@ -1,30 +1,26 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { BgpPeeringService } from 'src/app/services/bgp-peering.service';
+import { WhitelistService } from 'src/app/services/whitelist.service';
 import Swal from 'sweetalert2';
+import * as moment from 'moment';
 
 @Component({
-  selector: 'add-peer-dialog',
-  templateUrl: 'add-peer.component.html',
+  selector: 'add-whitelist-dialog',
+  templateUrl: 'add-whitelist.component.html',
 })
-export class AddPeerDialog implements OnInit{
-  constructor(public dialogRef: MatDialogRef<AddPeerDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder,
-  private bgpService: BgpPeeringService) { }
+export class AddWhitelistDialog implements OnInit{
+  constructor(public dialogRef: MatDialogRef<AddWhitelistDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder,
+  private whitelistService: WhitelistService) { }
 
-  addPeerForm!: FormGroup;
+  addWhitelistForm!: FormGroup;
 
   ngOnInit() {
-    this.addPeerForm = this.formBuilder.group({
-      peerName: [''],
-      peerAddress: [''],
-      peerAsn: [''],
-      localAsn: [''],
-      nextHopIp: [''],
-      bgpCommunity: [''],
-      bgpPassword: [''],
-      dataCenter: [''],
-      status: ['active']
+    this.addWhitelistForm = this.formBuilder.group({
+      ipAddress: new FormControl({ value: '', disabled: false}),
+      description: new FormControl({ value: '', disabled: false}),
+      addedBy: new FormControl({ value: 'system_test', disabled: false}),
+      addedDate: new FormControl({ value: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'), disabled: false})
     })
   }
 
@@ -33,8 +29,8 @@ export class AddPeerDialog implements OnInit{
   }
 
   onSubmit() {
-    console.log(this.addPeerForm.value);
-    this.bgpService.addPeer(this.addPeerForm.value)
+    // console.log(this.addWhitelistForm.value);
+    this.whitelistService.addWhitelist(this.addWhitelistForm.value)
       .subscribe((res: any) => {
         console.log(res);
         Swal.fire({
@@ -48,8 +44,8 @@ export class AddPeerDialog implements OnInit{
           if (result.dismiss === Swal.DismissReason.timer) {
             // this.router.navigate(['/bgp-peering']);
             this.dialogRef.close();
-            this.bgpService.peerList.push(this.addPeerForm.value);
-            this.bgpService.peerUpdated.next([...this.bgpService.peerList]);
+            this.whitelistService.whitelist.push(this.addWhitelistForm.value);
+            this.whitelistService.whitelistUpdated.next([...this.whitelistService.whitelist]);
           }
         });
 

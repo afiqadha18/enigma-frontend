@@ -41,9 +41,10 @@
               <th mat-header-cell *matHeaderCellDef> Execution </th>
                 <td mat-cell *matCellDef="let element">
                 <mat-chip-listbox>
-                  <mat-chip class="chip-approved" *ngIf="element.execution == 'start'">{{element.execution}}</mat-chip>
+                  <mat-chip class="chip-saved" *ngIf="element.execution == 'start'">{{element.execution}}</mat-chip>
                   <mat-chip class="chip-pending" *ngIf="element.execution == 'ended'">{{element.execution}}</mat-chip>
                   <mat-chip class="chip-approved" *ngIf="element.execution == 'active'">{{element.execution}}</mat-chip>
+                  <mat-chip class="chip-revert" *ngIf="element.execution == 'deleted'">{{element.execution}}</mat-chip>
                 </mat-chip-listbox>
               </td>
             </ng-container>

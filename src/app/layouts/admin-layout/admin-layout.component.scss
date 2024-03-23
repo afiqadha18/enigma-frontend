@@ -65,8 +65,31 @@
   color: #6bd098 !important;
 }
 
+::ng-deep .start-btn:hover > .action-icon, ::ng-deep .start-btn:hover > span {
+  color: var(--success-color) !important;
+}
+
+::ng-deep .stop-btn:hover > .action-icon, ::ng-deep .stop-btn:hover > span {
+  color: var(--danger-color) !important;
+}
+
+::ng-deep .extend-btn:hover > .action-icon, ::ng-deep .extend-btn:hover > span {
+  color: var(--warning-color) !important;
+}
+
+::ng-deep .edit-btn:hover > .action-icon, ::ng-deep .edit-btn:hover > span {
+  color: var(--primary-color) !important;
+}
+
+::ng-deep .delete-btn:hover > .action-icon, ::ng-deep .delete-btn:hover > span {
+  color: var(--danger-color) !important;
+}
+
+
 ::ng-deep .action-icon {
-  color: #000000e0;
+  // color: #000000e0;
+  margin-right: 10px !important;
+  padding-top: 5px !important;
 }
 
 ::ng-deep .search-icon:hover {
@@ -94,11 +117,28 @@
   font-size: 20px !important;
 }
 
+::ng-deep .hide-icon {
+  font-size: 15px !important;
+  padding-top: 11px !important;
+  padding-left: 8px !important;
+}
+
+::ng-deep .hide-icon:hover {
+  cursor: pointer !important;
+  color: var(--danger-color) !important;
+  transform: scale(1.1) !important;
+}
+
 ::ng-deep .modal-title {
   padding-bottom: 0 !important;
 }
 
 ::ng-deep .modal-action-btn {
   margin-right: 10px !important;
+}
+
+::ng-deep .unorderedList {
+  font-size: 16px !important;
+  font-weight: 300 !important;
 }
 
