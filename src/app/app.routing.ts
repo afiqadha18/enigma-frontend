@@ -9,9 +9,9 @@ export const AppRoutes: Routes = [
     path: 'login',
     component: LoginComponent
   },
-  // { path: 'firstTimeLogin/:userID',      
-  //   component: FirstTimeLoginComponent, 
-  //   canActivate:[AuthGuard]},
+  { path: 'firstTimeLogin/:userID',      
+    component: FirstTimeLoginComponent, 
+    canActivate:[AuthGuard]},
   {
     path: '',
     redirectTo: 'dashboard',

@@ -5,7 +5,8 @@ import { AuthService } from "src/app/services/auth.service";
 import { ManageUserService } from "src/app/services/manage-user.service";
 
 @Component({
-    templateUrl: './first-time-login.component.html'
+    templateUrl: './first-time-login.component.html',
+    styleUrls: ['./first-time-login.component.css']
 })
 export class FirstTimeLoginComponent implements OnInit{
     private userID = '';

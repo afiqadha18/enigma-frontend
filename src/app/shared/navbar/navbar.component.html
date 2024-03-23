@@ -23,7 +23,7 @@
           <input type="text" value="" class="form-control" placeholder="Search...">
           <div class="input-group-append">
             <div class="input-group-text">
-              <i class="nc-icon nc-zoom-split"></i>
+              <i class="nc-icon nc-zoom-split"></i> 
             </div>
           </div>
         </div>
@@ -55,14 +55,12 @@
           <a class="nav-link btn-rotate" href="javascript:void(0)">
             <i class="nc-icon nc-settings-gear-65"></i>
             <p>
-              <span class="d-lg-none d-md-block">Account</span>
+              <span >Account</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
-          <button type="button" (click)="logout()">
-            <span class="d-md-block">Logout</span>
-          </button>
+          <a  class="nav-link btn-rotate" (click)="logout()"><span>Logout</span></a>
         </li>
       </ul>
     </div>

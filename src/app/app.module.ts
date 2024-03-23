@@ -21,6 +21,9 @@ import { MatInputModule } from "@angular/material/input";
 import { MatGridListModule } from "@angular/material/grid-list";
 import { AuthGuard } from "./auth/auth.guard";
 import { FirstTimeLoginComponent } from "./pages/login/first-time-login/first-time-login.component";
+import { ErrorInterceptor } from "./error-interceptor";
+import { ErrorHandlingComponent } from "./error/error-handling.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 
 @NgModule({
@@ -28,9 +31,12 @@ import { FirstTimeLoginComponent } from "./pages/login/first-time-login/first-ti
         AppComponent,
         AdminLayoutComponent,
         LoginComponent,
-        FirstTimeLoginComponent
+        FirstTimeLoginComponent,
+        ErrorHandlingComponent
     ],
-    providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},AuthGuard],
+    providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},AuthGuard,
+        //{ provide:HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true}
+    ],
     bootstrap: [AppComponent],
     imports: [
         HttpClientModule,
@@ -47,6 +53,7 @@ import { FirstTimeLoginComponent } from "./pages/login/first-time-login/first-ti
         ReactiveFormsModule,
         MatFormFieldModule,
         MatCardModule,
+        MatDialogModule,
         MatInputModule,
         FormsModule,
         MatGridListModule

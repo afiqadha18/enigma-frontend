@@ -13,7 +13,7 @@ export class AuthService{
 
     login(username: string, password: string){
         const authData = { username: username, password:password};
-        this.http.post<{token : string, expiresIn: number, userId: string, firstTimeLogin: boolean}>('http://localhost:3001/api/login',authData)
+        return this.http.post<{token : string, expiresIn: number, userId: string, firstTimeLogin: boolean}>('http://localhost:3001/api/login',authData)
         .subscribe(response => {
             console.log("response "+ response.token);
             this.token = response.token;
@@ -35,6 +35,9 @@ export class AuthService{
                 }
                 
             }
+        }, error => {
+            console.log(error.message)
+            return error;
         })
     }
 
