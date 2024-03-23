@@ -5,9 +5,7 @@ import { WhitelistService } from '../../services/whitelist.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { AddWhitelistDialog } from './add-whitelist/add-whitelist.component';
-// import { AddPeerDialog } from './add-peer/add-peer.component';
-// import { EditPeerDialog } from './edit-peer/edit-peer.component';
-// import { DeletePeerDialog } from './delete-peer/delete-peer.component';
+import { DeleteWhitelistDialog } from './delete-whitelist/delete-whitelist.component';
 
 export interface Whitelist {
   listId: number;
@@ -35,7 +33,7 @@ export class IpWhitelistComponent implements OnInit{
 
     ngOnInit() {
       this.whitelistService.getWhitelistedIP();
-      this.whitelistSub = this.whitelistService.getPeerUpdateListener()
+      this.whitelistSub = this.whitelistService.getWhitelistUpdateListener()
         .subscribe((result: any) => {
           console.log(result);
           this.whitelist = result;
@@ -55,22 +53,13 @@ export class IpWhitelistComponent implements OnInit{
       })
     }
 
-    // editPeer(index: number) {
-    //   this.dialog.open(EditPeerDialog, {
-    //     disableClose: true,
-    //     width: "50vw",
-    //     height: "fit-content",
-    //     data: this.dataSource.data[index]
-    //   })
-    // }
-
-    // deletePeer(index: number) {
-    //   this.dialog.open(DeletePeerDialog, {
-    //     disableClose: true,
-    //     width: "25vw",
-    //     height: "fit-content",
-    //     data: this.dataSource.data[index]
-    //   })
-    // }
+    deleteWhitelist(index: number) {
+      this.dialog.open(DeleteWhitelistDialog, {
+        disableClose: true,
+        width: "25vw",
+        height: "fit-content",
+        data: this.dataSource.data[index]
+      })
+    }
 
 }

@@ -21,7 +21,7 @@ export class WhitelistService {
       })
   }
 
-  getPeerUpdateListener() {
+  getWhitelistUpdateListener() {
     return this.whitelistUpdated.asObservable();
   }
 
@@ -29,11 +29,7 @@ export class WhitelistService {
     return this.http.post(this.api_path + '/ipWhitelist', data);
   }
 
-  editPeer(data: any) {
-    return this.http.put(this.api_path + '/ipWhitelist', data);
-  }
-
-  deletePeer(ipAddress: string) {
+  deleteWhitelist(ipAddress: string) {
     return this.http.delete(`${this.api_path}/ipWhitelist'/${ipAddress}`);
   }
 

@@ -43,6 +43,7 @@ import { EditPeerDialog } from 'src/app/pages/bgp-peering/edit-peer/edit-peer.co
 import { DeletePeerDialog } from 'src/app/pages/bgp-peering/delete-peer/delete-peer.component';
 import { PasswordPipe} from 'src/app/pipe/hiddenChar';
 import { AddWhitelistDialog } from 'src/app/pages/ip-whitelist/add-whitelist/add-whitelist.component';
+import { DeleteWhitelistDialog } from 'src/app/pages/ip-whitelist/delete-whitelist/delete-whitelist.component';
 
 @NgModule({
   imports: [
@@ -87,7 +88,8 @@ import { AddWhitelistDialog } from 'src/app/pages/ip-whitelist/add-whitelist/add
     DeletePeerDialog,
     PasswordPipe,
     IpWhitelistComponent,
-    AddWhitelistDialog
+    AddWhitelistDialog,
+    DeleteWhitelistDialog
   ],
   providers: [],
   // entryComponents: [

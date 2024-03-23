@@ -16,14 +16,14 @@ import { ActivityLogComponent } from 'src/app/pages/activity-log/activity-log.co
 import { IpWhitelistComponent } from 'src/app/pages/ip-whitelist/ip-whitelist.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'dashboard',      component: DashboardComponent },
-    { path: 'user',           component: UserComponent },
-    { path: 'icons',          component: IconsComponent },
-    { path: 'ip-blackhole',   component: IpTableComponent},
-    { path: 'ip-prefixes',    component: IpBlackholeComponent},
-    { path: 'bgp-peering',    component: BgpPeeringComponent},
-    { path: 'ip-whitelist',   component: IpWhitelistComponent},
-    { path: 'activity-log',   component: ActivityLogComponent},
+    { path: 'dashboard',      component: DashboardComponent, canActivate:[AuthGuard]},
+    { path: 'user',           component: UserComponent, canActivate:[AuthGuard]},
+    { path: 'icons',          component: IconsComponent, canActivate:[AuthGuard]},
+    { path: 'ip-blackhole',   component: IpTableComponent, canActivate:[AuthGuard]},
+    { path: 'ip-prefixes',    component: IpBlackholeComponent, canActivate:[AuthGuard]},
+    { path: 'bgp-peering',    component: BgpPeeringComponent, canActivate:[AuthGuard]},
+    { path: 'ip-whitelist',   component: IpWhitelistComponent, canActivate:[AuthGuard]},
+    { path: 'activity-log',   component: ActivityLogComponent, canActivate:[AuthGuard]},
     { path: 'user-table',      component: UserTableComponent, canActivate:[AuthGuard]},
     //{ path: 'firstTimeLogin/:userID',      component: FirstTimeLoginComponent, canActivate:[AuthGuard]},
     // { path: 'login',      component: LoginComponent},

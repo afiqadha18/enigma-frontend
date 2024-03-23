@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { WhitelistService } from 'src/app/services/whitelist.service';
 import Swal from 'sweetalert2';
 import * as moment from 'moment';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'add-whitelist-dialog',
@@ -11,7 +12,7 @@ import * as moment from 'moment';
 })
 export class AddWhitelistDialog implements OnInit{
   constructor(public dialogRef: MatDialogRef<AddWhitelistDialog>, @Inject(MAT_DIALOG_DATA) public data: any, private formBuilder: FormBuilder,
-  private whitelistService: WhitelistService) { }
+  private whitelistService: WhitelistService, private authService: AuthService) { }
 
   addWhitelistForm!: FormGroup;
 
@@ -19,7 +20,7 @@ export class AddWhitelistDialog implements OnInit{
     this.addWhitelistForm = this.formBuilder.group({
       ipAddress: new FormControl({ value: '', disabled: false}),
       description: new FormControl({ value: '', disabled: false}),
-      addedBy: new FormControl({ value: 'system_test', disabled: false}),
+      addedBy: new FormControl({ value: this.authService.getUserId(), disabled: false}),
       addedDate: new FormControl({ value: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'), disabled: false})
     })
   }

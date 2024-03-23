@@ -52,7 +52,7 @@
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item class="delete-btn">
+                  <button mat-menu-item class="delete-btn" (click)="deleteWhitelist(i)">
                     <i class="nc-icon nc-simple-remove action-icon"></i>
                     <span>Delete Whitelist</span>
                   </button>
