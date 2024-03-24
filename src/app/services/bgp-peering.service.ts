@@ -12,8 +12,8 @@ export class BgpPeeringService {
   peerUpdated = new Subject<Peer[]>();
   constructor(private http: HttpClient) { }
 
-  api_path = 'http://localhost:3000/api/upload';
-  bgp_path = 'http://localhost:3000/api/bgp';
+  api_path = 'http://localhost:3001/api/upload';
+  bgp_path = 'http://localhost:3001/api/bgp';
 
   getUploadedIp() {
     return this.http.get(this.api_path + '/getUploadData');
@@ -28,11 +28,11 @@ export class BgpPeeringService {
   }
 
   getUserList() {
-    return this.http.get('http://localhost:3000/api/user/getUser');
+    return this.http.get('http://localhost:3001/api/user/getUser');
   }
 
   getPeerList() {
-    this.http.get('http://localhost:3000/api/bgp/bgpPeer')
+    this.http.get('http://localhost:3001/api/bgp/bgpPeer')
       .subscribe((peerData: any) => {
         this.peerList = peerData.data;
         this.peerUpdated.next([...this.peerList]);

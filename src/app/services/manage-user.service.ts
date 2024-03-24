@@ -6,8 +6,8 @@ import { User } from "../model/user.model";
 
 @Injectable({providedIn: 'root'})
 export class ManageUserService{
-    private user: User[] =[];
-    private userUpdated = new Subject<User[]>();
+    user: User[] =[];
+    userUpdated = new Subject<User[]>();
     constructor(private http: HttpClient, private router: Router){}
 
     getUser(userId:string) {
@@ -79,7 +79,7 @@ export class ManageUserService{
             user.userID = response.userID;
             this.user.push(user);
             this.userUpdated.next([...this.user]);
-            this.router.navigate(["/user"]);
+            //this.router.navigate(["/user"]);
 
         })
     }
@@ -93,10 +93,7 @@ export class ManageUserService{
             userID: userId, username: username, email: email, role: role, status: status,
             firstTimeLogin: false
         }
-        this.http.put<{message: string}>('http://localhost:3001/api/user/edituser',user)
-        .subscribe(response => {
-            
-        })
+        return this.http.put<{message: string}>('http://localhost:3001/api/user/edituser',user);
     }
 
     getUserUpdateAsObservable(){
