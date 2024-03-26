@@ -8,6 +8,7 @@ import { ManageUserService } from "../../../services/manage-user.service";
 import { Subscription } from 'rxjs';
 import { EditUserComponent } from "../edit-user/edit-user.component";
 import { AuthService } from "src/app/services/auth.service";
+import Swal from "sweetalert2";
 
 @Component({
     selector:'app-user-table',
@@ -34,7 +35,35 @@ export class UserTableComponent implements OnInit, OnDestroy{
     }
 
     deleteSalary(userID : string){
-        this.manageuserservice.deleteUser(userID);
+        this.manageuserservice.deleteUser(userID)
+        .subscribe((res: any) => {
+            console.log(res);
+            Swal.fire({
+              icon: 'success',
+              title: "Submitted",
+              text: res.message,
+              showConfirmButton: false,
+              timer: 2000,
+              timerProgressBar: true,
+            }).then((result) => {
+              if (result.dismiss === Swal.DismissReason.timer) {
+                    const updateduser = this.manageuserservice.user.filter( user => user.userID !== userID);
+                    this.manageuserservice.user = updateduser;
+                    this.manageuserservice.userUpdated.next([...this.manageuserservice.user]);
+              }
+            });
+        },
+          (error) => {
+            console.log(error);
+            console.log('status code: ' + error.status);
+            Swal.fire({
+              title: error.statusText,
+              text: error.error.error,
+              icon: 'error',
+              showCloseButton: true,
+              showConfirmButton: false
+            })
+          });;
     }
 
     addUserDialog(){
