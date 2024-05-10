@@ -6,8 +6,8 @@ import { User } from "../model/user.model";
 
 @Injectable({providedIn: 'root'})
 export class ManageUserService{
-    private user: User[] =[];
-    private userUpdated = new Subject<User[]>();
+    user: User[] =[];
+    userUpdated = new Subject<User[]>();
     constructor(private http: HttpClient, private router: Router){}
 
     getUser(userId:string) {
@@ -61,27 +61,27 @@ export class ManageUserService{
     }
 
     deleteUser(userID : string){
-        this.http.delete<{message: string}>('http://localhost:3001/api/user/deleteUser/' + userID)
-        .subscribe(response =>{
-            const updateduser = this.user.filter( user => user.userID !== userID);
-            this.user = updateduser;
-            this.userUpdated.next([...this.user]);
-        })
+        return this.http.delete<{message: string}>('http://localhost:3001/api/user/deleteUser/' + userID)
+        // .subscribe(response =>{
+        //     const updateduser = this.user.filter( user => user.userID !== userID);
+        //     this.user = updateduser;
+        //     this.userUpdated.next([...this.user]);
+        // })
     }
 
     addUser(username: string, email: string, role: string){
         const user: User = {userID:'', username: username, email:email, role:role,  firstTimeLogin:true, status:'Active'}
-        this.http.post<{message: string, userID: string, firstTimeLogin: string, status: string}>('http://localhost:3001/api/user/adduser',user)
-        .subscribe(response => {
-            console.log("user ID: " +response.userID);
-            console.log("firstTimeLogin: " +response.firstTimeLogin);
-            console.log("status: " +response.status);
-            user.userID = response.userID;
-            this.user.push(user);
-            this.userUpdated.next([...this.user]);
-            this.router.navigate(["/user"]);
+        return this.http.post<{message: string, userID: string, firstTimeLogin: string, status: string}>('http://localhost:3001/api/user/adduser',user);
+        // .subscribe(response => {
+        //     console.log("user ID: " +response.userID);
+        //     console.log("firstTimeLogin: " +response.firstTimeLogin);
+        //     console.log("status: " +response.status);
+        //     user.userID = response.userID;
+        //     this.user.push(user);
+        //     this.userUpdated.next([...this.user]);
+        //     //this.router.navigate(["/user"]);
 
-        })
+        // })
     }
 
     editUser(userId:string ,username: string, email: string, role: string, status: string){
@@ -93,10 +93,7 @@ export class ManageUserService{
             userID: userId, username: username, email: email, role: role, status: status,
             firstTimeLogin: false
         }
-        this.http.put<{message: string}>('http://localhost:3001/api/user/edituser',user)
-        .subscribe(response => {
-            
-        })
+        return this.http.put<{message: string}>('http://localhost:3001/api/user/edituser',user);
     }
 
     getUserUpdateAsObservable(){
