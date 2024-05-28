@@ -52,7 +52,18 @@ export class UserTableComponent implements OnInit, OnDestroy{
                     this.manageuserservice.userUpdated.next([...this.manageuserservice.user]);
               }
             });
-        });
+        },
+          (error) => {
+            console.log(error);
+            console.log('status code: ' + error.status);
+            Swal.fire({
+              title: error.statusText,
+              text: error.error.error,
+              icon: 'error',
+              showCloseButton: true,
+              showConfirmButton: false
+            })
+          });
     }
 
     addUserDialog(){

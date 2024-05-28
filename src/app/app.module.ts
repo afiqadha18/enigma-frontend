@@ -35,7 +35,7 @@ import { MatDialogModule } from "@angular/material/dialog";
         ErrorHandlingComponent
     ],
     providers: [{ provide:HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},AuthGuard,
-        //{ provide:HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true}
+       // { provide:HTTP_INTERCEPTORS, useClass:ErrorInterceptor, multi:true}
     ],
     bootstrap: [AppComponent],
     imports: [

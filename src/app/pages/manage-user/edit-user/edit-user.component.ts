@@ -68,7 +68,7 @@ export class EditUserComponent implements OnInit{
             console.log('status code: ' + error.status);
             Swal.fire({
               title: error.statusText,
-              text: error.error.error,
+              text: error.error.message,
               icon: 'error',
               showCloseButton: true,
               showConfirmButton: false
