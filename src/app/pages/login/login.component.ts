@@ -28,11 +28,12 @@ export class LoginComponent{
                 this.authservice.setAuthTimer(expiresInDuration);
                 this.authservice.username = response.username;
                 this.authservice.userId = response.userId;
+                this.authservice.role = response.role;
                 this.authservice.authStatusListener.next(true);
                 this.authservice.isUserAuthenticated = true;
                 const now = new Date();
                 const expirationDate = new Date(now.getTime() + expiresInDuration*1000);
-                this.authservice.saveAuthenticationData(this.authservice.token, expirationDate,this.authservice.userId, this.authservice.username);
+                this.authservice.saveAuthenticationData(this.authservice.token, expirationDate,this.authservice.userId, this.authservice.username, this.authservice.role);
                 //if first time user flag is up then we need to make user change password
                 if(response.firstTimeLogin){
                     this.router.navigate(['/firstTimeLogin', this.authservice.userId]);
