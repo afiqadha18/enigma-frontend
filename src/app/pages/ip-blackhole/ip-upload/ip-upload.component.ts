@@ -52,22 +52,59 @@ export class IpUploadComponent implements OnInit{
     onSubmit() {
       console.log(this.addForm.value);
       this.bgpService.addIpAddress(this.addForm.value)
-        .subscribe((res: any) => {
-          console.log(res.message);
-          if (res.message == 'Invalid ip address found! Please fix those ip addresses.') {
+        // .subscribe((res: any) => {
+        //   console.log(res.message);
+        //   if (res.message == 'Invalid ip address found! Please fix those ip addresses.') {
+        //     Swal.fire({
+        //       icon: "error",
+        //       title: "Invalid IP Address!",
+        //       text: "Please fix those IP Addresses before try submitting again",
+        //       showConfirmButton: false,
+        //       showCloseButton: true
+        //     });
+        //   } else {
+        //     Swal.fire({
+        //       icon: "success",
+        //       title: res.message,
+        //       showConfirmButton: false,
+        //       timer: 1500
+        //     });
+        //   }
+        // })
+        .subscribe({
+          error: (err) => {
+            if (err.status === 400) {
+              Swal.fire({
+                title: 'Invalid ip address found!',
+                text: 'Please fix those ip addresses before submitting again',
+                icon: 'error'
+              });
+            } else if (err.status === 409) {
+              Swal.fire({
+                title: 'Duplicates IP Address found',
+                text: 'Please fix those ip addresses before submitting again',
+                icon: 'error'
+              });
+            } else {
+              Swal.fire({
+                title: 'Error!',
+                text: err.message,
+                icon: 'error'
+              });
+            }
+          }, complete: () => {
             Swal.fire({
-              icon: "error",
-              title: "Invalid IP Address!",
-              text: "Please fix those IP Addresses before try submitting again",
+              icon: 'success',
+              title: "Submitted",
+              text: "Data has been inserted successfully!",
               showConfirmButton: false,
-              showCloseButton: true
-            });
-          } else {
-            Swal.fire({
-              icon: "success",
-              title: res.message,
-              showConfirmButton: false,
-              timer: 1500
+              timer: 2000,
+              timerProgressBar: true,
+            }).then((result) => {
+              if (result.dismiss === Swal.DismissReason.timer) {
+                // this.router.navigate(['/ip-prefixes']);
+                window.location.reload();
+              }
             });
           }
         })

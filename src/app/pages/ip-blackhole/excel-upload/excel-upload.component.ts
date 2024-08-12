@@ -143,38 +143,39 @@ export class ExcelUploadComponent{
 
     formdata.append('data', JSON.stringify(data));
     formdata.append('attachment', this.physicalFile[0]);
-
+    this.physicalFile = [];
     this.bgpService.uploadExcelIp(formdata)
-      .subscribe((res: any) => {
-        console.log(res);
-        if (res.message == 'file uploaded successfully') {
-          Swal.fire({
-            icon: 'success',
-            title: "Submitted",
-            text: "File has been uploaded successfully!",
-            showConfirmButton: false,
-            timer: 2000,
-            timerProgressBar: true,
-          }).then((result) => {
-            if (result.dismiss === Swal.DismissReason.timer) {
-              // this.router.navigate(['/bgp-peering']);
-              window.location.reload();
-            }
-          });
-        } else if (res.message == 'Invalid ip address found! Please fix those ip addresses.') {
+    .subscribe({
+      error: (err) => {
+        if (err.status == 400) {
           Swal.fire({
             title: 'Invalid ip address found!',
             text: 'Please fix those ip addresses before submitting again',
             icon: 'error'
           });
-        } else if (res.message == 'Duplicates IP Address found! Please fix those ip addresses.') {
+        } else if (err.status == 409) {
           Swal.fire({
             title: 'Duplicates IP Address found',
             text: 'Please fix those ip addresses before submitting again',
             icon: 'error'
           });
         }
+      }, complete: () => {
+        Swal.fire({
+          icon: 'success',
+          title: "Submitted",
+          text: "File has been uploaded successfully!",
+          showConfirmButton: false,
+          timer: 2000,
+          timerProgressBar: true,
+        }).then((result) => {
+          if (result.dismiss === Swal.DismissReason.timer) {
+            // this.router.navigate(['/bgp-peering']);
+            window.location.reload();
+          }
+        });
 
-      })
+      }
+    })
   }
 }
